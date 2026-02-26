@@ -7123,14 +7123,16 @@ All providers <span class="caret">▾</span>
       
 
       <div class="devGroup">
-        <span class="devLabel">Gradients</span>
+        <span class="devLabel">Visual style: gradients</span>
         <label class="devToggle" style="display:flex;gap:10px;align-items:center;cursor:pointer">
           <input type="checkbox" id="toggleNoGrad"/>
           <span style="font-weight:1100;color:rgba(255,255,255,.9)">Disable gradients (solid UI)</span>
         </label>
-        <small class="devNote">Toggle off accent blends + background glows without changing theme palettes.</small>
+        <small class="devNote">Turns off accent glows and gradient overlays across the UI.</small>
+      </div>
+
       <div class="devGroup">
-        <span class="devLabel">Dropdown menus</span>
+        <span class="devLabel">Dropdown menu style</span>
         <label class="devToggle" style="display:flex;gap:10px;align-items:center;cursor:pointer">
           <input type="checkbox" id="toggleOpaqueMenus"/>
           <span style="font-weight:1100;color:rgba(255,255,255,.9)">Opaque dropdown menus (no glass)</span>
@@ -7139,9 +7141,6 @@ All providers <span class="caret">▾</span>
       </div>
 
 
-      </div>
-
-      
       <div class="devGroup">
         <span class="devLabel">Tile tags</span>
         <label class="devToggle" style="display:flex;gap:10px;align-items:center;cursor:pointer">
@@ -7153,7 +7152,7 @@ All providers <span class="caret">▾</span>
 
 
 <div class="devGroup">
-  <span class="devLabel">Action Buttons (Deposit / Withdraw / Claim / Accept)</span>
+  <span class="devLabel">Animation group: Action buttons</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <select id="devActionBtnAnimPreset" class="devSelect" aria-label="Action button animation preset">
       <option value="classic">Classic</option>
@@ -7161,12 +7160,12 @@ All providers <span class="caret">▾</span>
       <option value="gel">Gel pop</option>
       <option value="pulse">Pulse ring</option>
     </select>
-    <span class="hint" style="opacity:.85">Affects main action buttons across the site</span>
+    <span class="hint" style="opacity:.85">Targets primary action buttons (Deposit, Withdraw, Claim, Accept, Send).</span>
   </div>
 </div>
 
 <div class="devGroup">
-  <span class="devLabel">Menu / Icon Buttons (Sidebar, Arrows, Small Controls)</span>
+  <span class="devLabel">Animation group: Menu / icon buttons</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <select id="devMenuBtnAnimPreset" class="devSelect" aria-label="Menu button animation preset">
       <option value="classic">Classic</option>
@@ -7174,12 +7173,12 @@ All providers <span class="caret">▾</span>
       <option value="ring">Glow ring</option>
       <option value="gloss">Gloss overlay</option>
     </select>
-    <span class="hint" style="opacity:.85">Affects nav/menu/icon style buttons only</span>
+    <span class="hint" style="opacity:.85">Targets sidebar buttons, arrow controls, and small icon buttons.</span>
   </div>
 </div>
 
 <div class="devGroup">
-  <span class="devLabel">Containers / Borders (Cards, Panels, Tickets)</span>
+  <span class="devLabel">Animation group: Containers / borders</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <select id="devContainerAnimPreset" class="devSelect" aria-label="Container animation preset">
       <option value="classic">Classic</option>
@@ -7187,12 +7186,12 @@ All providers <span class="caret">▾</span>
       <option value="edge">Neon edge</option>
       <option value="shimmer">Shimmer border</option>
     </select>
-    <span class="hint" style="opacity:.85">Affects card/panel/container edges</span>
+    <span class="hint" style="opacity:.85">Targets card, panel, and ticket container edges.</span>
   </div>
 </div>
 
 <div class="devGroup">
-  <span class="devLabel">Game Thumbnail Placeholders (Posters / Ticket thumbnails)</span>
+  <span class="devLabel">Animation group: Game thumbnail placeholders</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <select id="devThumbAnimPreset" class="devSelect" aria-label="Thumbnail animation preset">
       <option value="classic">Classic</option>
@@ -7200,19 +7199,19 @@ All providers <span class="caret">▾</span>
       <option value="shine">Shine sweep</option>
       <option value="focus">Focus glow</option>
     </select>
-    <span class="hint" style="opacity:.85">Affects slot/game thumbnail placeholders only</span>
+    <span class="hint" style="opacity:.85">Targets slot posters and ticket thumbnail placeholders only.</span>
   </div>
 </div>
 
 <div class="devGroup">
-  <span class="devLabel">Spotlight Hover (extra highlight category)</span>
+  <span class="devLabel">Animation group: Spotlight hover</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <select id="devSpotlightAnimPreset" class="devSelect" aria-label="Spotlight hover animation preset">
       <option value="classic">Classic</option>
       <option value="beam">Beam edge</option>
       <option value="aurora">Aurora wash</option>
     </select>
-    <span class="hint" style="opacity:.85">Adds spotlight-like hover emphasis to tiles/cards</span>
+    <span class="hint" style="opacity:.85">Adds an extra highlight layer on hover for tiles/cards.</span>
   </div>
 </div>
 
