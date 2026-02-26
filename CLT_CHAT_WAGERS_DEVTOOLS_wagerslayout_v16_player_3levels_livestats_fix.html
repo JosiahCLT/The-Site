@@ -3958,8 +3958,11 @@ body:before{display:block !important;}
   inset:0;
   display:none;
   z-index:9999;
-  padding:var(--ballzInset, 26px);
-  background:linear-gradient(180deg, #06070d, #0a0c15 58%, #080a13);
+  padding:var(--ballzInset, 34px);
+  background:
+radial-gradient(900px 560px at 12% 2%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
+radial-gradient(900px 560px at 92% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%),
+linear-gradient(180deg, var(--bg0), var(--bg1));
   pointer-events:auto;
   box-sizing:border-box;
 }
@@ -4034,7 +4037,7 @@ body:before{display:block !important;}
 .pCtrl.active{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.20); color:rgba(255,255,255,.95);}
 .pCtrl svg{width:18px;height:18px}
 
-body.ballzTheatre .gameOverlay{padding:10px}
+body.ballzTheatre .gameOverlay{padding:16px}
 
 body.ballzFullscreen .gameOverlay{padding:0}
 body.ballzFullscreen .gameShell{border-radius:0;border:0;box-shadow:none}
@@ -9502,7 +9505,7 @@ function renderWagers(){
 
   if(s === 'stake') list.sort((a,b)=>(b.amt-a.amt));
   else if(s === 'exp') list.sort((a,b)=>(a.expMin-b.expMin));
-  else list.sort((a,b)=>(a.id < b.id ? 1 : -1));
+  else list.sort((a,b)=>((b.createdAt||0)-(a.createdAt||0) || (String(b.id||'').localeCompare(String(a.id||'')))));
 
   const totalPages = Math.max(1, Math.ceil(list.length / W_PAGE_SIZE));
   W_PAGE = Math.min(Math.max(1, W_PAGE), totalPages);
@@ -22459,7 +22462,7 @@ body.timerLeft .topbar .timerPill .timerBar{
   --ballzLeft: 260px;
   --ballzRight: 320px;
   --ballzTop: 62px;
-  --ballzInset: 26px;
+  --ballzInset: 34px;
 }
 /* prevent the main scroll from scrolling while player is open */
 body.ballzOpen #scroll{ overflow:hidden !important; }
@@ -22740,6 +22743,9 @@ body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzL
     try{
       // Ensure filters show the new ticket
       if(wFilterCur) wFilterCur.value = cur;
+      if(wFilterGame) wFilterGame.value = game;
+      if(wFilterMode) wFilterMode.value = 'All';
+      if(wFilterSort) wFilterSort.value = 'new';
       if(typeof syncWagerCurTabs === 'function') syncWagerCurTabs();
       if(typeof resetWagerPage === 'function') resetWagerPage();
       if(typeof renderWagers === 'function') renderWagers();
