@@ -4034,11 +4034,6 @@ body:before{display:block !important;}
 .pCtrl.active{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.20); color:rgba(255,255,255,.95);}
 .pCtrl svg{width:18px;height:18px}
 
-body.ballzOpen .app,
-body.ballzOpen .drawer,
-body.ballzOpen .drawerShade,
-body.ballzOpen .devpanel{display:none !important}
-
 body.ballzTheatre .gameOverlay{padding:10px}
 
 body.ballzFullscreen .gameOverlay{padding:0}
@@ -9292,6 +9287,7 @@ online = Math.max(1, Math.min(99, online + (rand(3)-1)));
 updateOnline();
 loopIncoming();
 }, delay);
+})();
 /* ---------- Wagers (demo) ---------- */
 const wagerGridEl = $('#wagerGrid');
 const wFilterGame = $('#wFilterGame');
@@ -9650,7 +9646,6 @@ $('#devWagerSeed')?.addEventListener('click', ()=>{
   toast('🧪', 'Seeded wagers');
   if(CURRENT_PAGE==='Wagers') renderWagers();
 });
-})();
 /* ---------- Drawer ---------- */
 function openDrawer(){
 $('#drawerShade')?.classList.add('show');
@@ -22461,12 +22456,18 @@ body.timerLeft .topbar .timerPill .timerBar{
 
 <style id="clt-ballz-player-style-v14">
 :root{
+  --ballzLeft: 260px;
+  --ballzRight: 320px;
+  --ballzTop: 62px;
   --ballzInset: 26px;
 }
 /* prevent the main scroll from scrolling while player is open */
 body.ballzOpen #scroll{ overflow:hidden !important; }
 
-/* Theatre = hide chat panel so the player gets wide */
+/* Keep overlay in sync with measured sidebar/chat widths */
+body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzLeft) !important; right: var(--ballzRight) !important; bottom:0 !important; }
+
+/* Theatre = tighter spacing with the same shell visible */
 </style>
 
 <script id="clt-ballz-player-boot-v14">
@@ -22493,7 +22494,20 @@ body.ballzOpen #scroll{ overflow:hidden !important; }
     }catch(e){}
   }
 
-  function measure(){}
+  function measure(){
+    try{
+      var ls = byId('leftSidebar');
+      var rs = byId('todayPanel');
+      var top = document.querySelector('.top');
+
+      var lsW = ls ? Math.round(ls.getBoundingClientRect().width) : 0;
+      var rsW = rs ? Math.round(rs.getBoundingClientRect().width) : 0;
+      var topH = top ? Math.round(top.getBoundingClientRect().height) : 0;
+      document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
+      document.documentElement.style.setProperty('--ballzRight', rsW + 'px');
+      document.documentElement.style.setProperty('--ballzTop', topH + 'px');
+    }catch(e){}
+  }
 
   function syncBallzRoute(open){
     try{
