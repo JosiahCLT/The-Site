@@ -92,7 +92,10 @@ margin:0;
 font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 color:var(--text);
 overflow:hidden;
-background:transparent;
+background:
+radial-gradient(1200px 700px at 20% -15%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
+radial-gradient(1000px 600px at 90% 0%, color-mix(in srgb, var(--accent2) 12%, transparent), transparent 60%),
+linear-gradient(180deg, var(--bg0), var(--bg1));
 }
 body:before{
 content:"";
@@ -1470,7 +1473,7 @@ display:grid;
 place-items:center;
 }
 .poster:after{
-content:"";
+content:none !important;
 position:absolute;
 inset:-40% -60%;
 background:radial-gradient(circle at var(--mx, 50%) var(--my, 35%), rgba(255,255,255,.18), transparent 55%);
@@ -1478,7 +1481,7 @@ opacity:0;
 transition:opacity .16s;
 pointer-events:none;
 }
-.tile:hover .poster:after{opacity:1}
+.tile:hover .poster:after{opacity:0}
 .overlay{position:absolute;left:10px;right:10px;bottom:10px;transform:translateY(18px);opacity:0;transition:transform .16s, opacity .16s}
 .tile:hover .overlay{transform:translateY(0);opacity:1}
 .playPill{
@@ -3957,8 +3960,8 @@ body:before{display:block !important;}
   z-index:9999;
   padding:var(--ballzInset, 18px);
   background:
-radial-gradient(900px 560px at 12% 2%, rgba(251,44,54,.16), transparent 55%),
-radial-gradient(900px 560px at 92% 10%, rgba(255,122,24,.12), transparent 55%),
+radial-gradient(1200px 700px at 20% -15%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
+radial-gradient(1000px 600px at 90% 0%, color-mix(in srgb, var(--accent2) 12%, transparent), transparent 60%),
 linear-gradient(180deg, var(--bg0), var(--bg1));
   pointer-events:auto;
   box-sizing:border-box;
@@ -6073,82 +6076,7 @@ html.hide-tile-tags .poster .cornerTag{ display:none !important; }
 </style>
 
 
-<style id="clt-anim-presets">
-/* ===== Dev: Animation presets (catalog) =====
-   Add more presets by:
-   1) Adding an option to the relevant dev animation select
-   2) Adding matching CSS under html[data-anim="..."]
-*/
-.devPanel, .devPanel * { color-scheme: dark; }
 
-/* Keep Classic (V1) as the default — it uses the site's existing hover rules. */
-
-html[data-anim="lift"] .tile,
-html[data-anim="lift"] .modeTile{
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-}
-html[data-anim="lift"] .tile:hover,
-html[data-anim="lift"] .modeTile:hover{
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 28px 86px rgba(0,0,0,.34);
-}
-
-html[data-anim="tilt"] .tile,
-html[data-anim="tilt"] .modeTile{
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-  transform-origin: 50% 60%;
-}
-html[data-anim="tilt"] .tile:hover,
-html[data-anim="tilt"] .modeTile:hover{
-  transform: translateY(-5px) rotate(-1deg) scale(1.02);
-  box-shadow: 0 30px 92px rgba(0,0,0,.36);
-}
-
-html[data-anim="neon"] .tile,
-html[data-anim="neon"] .modeTile{
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-}
-html[data-anim="neon"] .tile::after,
-html[data-anim="neon"] .modeTile::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius: 18px;
-  pointer-events:none;
-  opacity:0;
-  filter: blur(14px);
-  background: conic-gradient(from 120deg,
-    rgba(0,255,255,.35),
-    rgba(255,80,140,.35),
-    rgba(255,200,70,.35),
-    rgba(120,255,120,.35),
-    rgba(0,255,255,.35)
-  );
-  transition: opacity .18s ease;
-  mix-blend-mode: screen;
-}
-html[data-anim="neon"] .tile:hover::after,
-html[data-anim="neon"] .modeTile:hover::after{ opacity:.9; }
-html[data-anim="neon"] .tile:hover,
-html[data-anim="neon"] .modeTile:hover{
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 32px 110px rgba(0,0,0,.40);
-}
-
-/* Off = kill motion without changing layout */
-html[data-anim="off"] .tile,
-html[data-anim="off"] .modeTile,
-html[data-anim="off"] .btn,
-html[data-anim="off"] .pill,
-html[data-anim="off"] .chip{
-  transition: none !important;
-  animation: none !important;
-}
-html[data-anim="off"] .tile:hover,
-html[data-anim="off"] .modeTile:hover{
-  transform: none !important;
-}
-</style>
 <style id="clt-chat-wagers-v2">
 /* Chat: remove top header + make composer vertical */
 .todayBody[data-page="chat"] .chatTopRow{display:none !important;}
