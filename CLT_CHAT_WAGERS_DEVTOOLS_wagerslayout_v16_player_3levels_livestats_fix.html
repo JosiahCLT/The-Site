@@ -6408,34 +6408,52 @@ html[data-anim="off"] .modeTile:hover{
 @media (max-width:1500px){ .wagersTools{grid-template-columns:repeat(3,minmax(0,1fr));} }
 @media (max-width:980px){ .wagersTools{grid-template-columns:1fr 1fr;} }
 
-/* Dev FX playground hooks */
-html[data-gamefx="shimmer"] .wagerCard::after,
-html[data-gamefx="shimmer"] .tile::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.18) 48%, transparent 66%);
-  transform:translateX(-120%);
-  transition:transform .55s ease;
-  pointer-events:none;
-}
-html[data-gamefx="shimmer"] .wagerCard:hover::after,
-html[data-gamefx="shimmer"] .tile:hover::before{transform:translateX(120%)}
-html[data-gamefx="lift"] .wagerCard:hover{transform:translateY(-4px) scale(1.01); box-shadow:0 26px 80px rgba(0,0,0,.42)}
-html[data-gamefx="glass"] .wagerCard{backdrop-filter:blur(18px) saturate(1.18)}
+/* Dev FX playground hooks (clear target groups) */
+:root{--btnPressY:1px}
 
-html[data-btnfx="gel"] .btn,
-html[data-btnfx="gel"] .pCtrl,
-html[data-btnfx="gel"] .wAcceptBtn{transition:transform .14s ease, filter .14s ease, box-shadow .14s ease}
-html[data-btnfx="gel"] .btn:hover,
-html[data-btnfx="gel"] .pCtrl:hover,
-html[data-btnfx="gel"] .wAcceptBtn:hover{transform:translateY(-2px) scale(1.02); filter:brightness(1.08)}
-html[data-btnfx="pulse"] .btn:hover,
-html[data-btnfx="pulse"] .wAcceptBtn:hover{box-shadow:0 0 0 3px rgba(255,120,80,.24), 0 14px 30px rgba(0,0,0,.34)}
-html[data-btnfx="neon"] .btn,
-html[data-btnfx="neon"] .wAcceptBtn{border-color:rgba(120,220,255,.42); box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 0 0 1px rgba(120,220,255,.2)}
-html[data-btnfx="neon"] .btn:hover,
-html[data-btnfx="neon"] .wAcceptBtn:hover{box-shadow:0 0 0 2px rgba(120,220,255,.35), 0 0 24px rgba(120,220,255,.24)}
+/* 1) BUTTONS */
+html[data-btn-anim="stake"] :is(.btn,.ghostBtn,.sbCta,.pCtrl,.playPill,.wCurTab,.wAcceptBtn){
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(10,12,24,.96), rgba(3,5,13,.98));
+  border-color:rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 10px 18px rgba(0,0,0,.34);
+}
+html[data-btn-anim="stake"] :is(.btn,.ghostBtn,.sbCta,.pCtrl,.playPill,.wCurTab,.wAcceptBtn):hover{transform:translateY(-1px);filter:brightness(1.08)}
+html[data-btn-anim="stake"] :is(.btn,.ghostBtn,.sbCta,.pCtrl,.playPill,.wCurTab,.wAcceptBtn):active{transform:translateY(var(--btnPressY))}
+
+html[data-btn-anim="gel"] :is(.btn,.ghostBtn,.sbCta,.pCtrl,.playPill,.wCurTab,.wAcceptBtn){transition:transform .14s ease, filter .14s ease, box-shadow .14s ease}
+html[data-btn-anim="gel"] :is(.btn,.ghostBtn,.sbCta,.pCtrl,.playPill,.wCurTab,.wAcceptBtn):hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.08)}
+
+html[data-btn-anim="pulse"] :is(.btn,.ghostBtn,.sbCta,.pCtrl,.playPill,.wCurTab,.wAcceptBtn):hover{box-shadow:0 0 0 3px rgba(255,120,80,.24),0 14px 30px rgba(0,0,0,.34)}
+
+/* 2) CONTAINERS / BORDERS */
+html[data-container-anim="lift"] :is(.panel,.wagerCard,.wInfo,.wTeams,.wPlayerTile,.tile,.modeTile){transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+html[data-container-anim="lift"] :is(.wagerCard,.tile,.modeTile):hover{transform:translateY(-4px);box-shadow:0 24px 80px rgba(0,0,0,.38)}
+
+html[data-container-anim="edge"] :is(.panel,.wagerCard,.wInfo,.wTeams,.wPlayerTile,.tile,.modeTile){border-color:color-mix(in srgb, var(--accent) 28%, var(--stroke));}
+html[data-container-anim="edge"] :is(.wagerCard,.tile,.modeTile):hover{box-shadow:0 0 0 1px rgba(120,220,255,.35),0 0 30px rgba(120,220,255,.18)}
+
+html[data-container-anim="shimmer"] :is(.wagerCard,.tile,.modeTile){position:relative;overflow:hidden}
+html[data-container-anim="shimmer"] :is(.wagerCard,.tile,.modeTile)::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.14) 50%, transparent 70%);
+  transform:translateX(-120%);transition:transform .6s ease;
+}
+html[data-container-anim="shimmer"] :is(.wagerCard,.tile,.modeTile):hover::after{transform:translateX(120%)}
+
+/* 3) THUMBNAILS / PLACEHOLDERS */
+html[data-thumb-anim="float"] :is(.tile .poster,.wThumb .poster,.wTicketMid .poster){transition:transform .18s ease, box-shadow .18s ease}
+html[data-thumb-anim="float"] :is(.tile:hover .poster,.wThumb:hover .poster,.wagerCard:hover .wTicketMid .poster){transform:translateY(-4px) scale(1.02);box-shadow:0 18px 50px rgba(0,0,0,.36)}
+
+html[data-thumb-anim="shine"] :is(.tile .poster,.wThumb .poster,.wTicketMid .poster){position:relative;overflow:hidden}
+html[data-thumb-anim="shine"] :is(.tile .poster,.wThumb .poster,.wTicketMid .poster)::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);
+  transform:translateX(-120%);transition:transform .55s ease;
+}
+html[data-thumb-anim="shine"] :is(.tile:hover .poster,.wThumb:hover .poster,.wagerCard:hover .wTicketMid .poster)::before{transform:translateX(120%)}
+
+html[data-thumb-anim="focus"] :is(.tile .poster,.wThumb .poster,.wTicketMid .poster){border-color:color-mix(in srgb, var(--accent2) 28%, var(--stroke));box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 0 34px rgba(140,220,255,.16)}
 /* Chat wager announcement cards */
 .chatMsg.wager .chatBubble{border-color: color-mix(in srgb, var(--stroke) 60%, rgba(255,120,80,.22));}
 .chatWagerCard{
@@ -7136,43 +7154,41 @@ All providers <span class="caret">▾</span>
 
 
 <div class="devGroup">
-  <span class="devLabel">Animations</span>
+  <span class="devLabel">Button animations (site-wide)</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devAnimPreset" class="devSelect" aria-label="Animation preset">
-      <option value="classic">Classic (V1)</option>
-      <option value="lift">Lift + Glow</option>
-      <option value="tilt">Tilt + Pop</option>
-      <option value="neon">Neon Shine</option>
-      <option value="off">Off (no motion)</option>
-    </select>
-    <span class="hint" style="opacity:.85">Hover + micro-interactions</span>
-  </div>
-  <small class="devNote">Selects the tile/card hover style. Easy to add more presets later; setting is saved locally.</small>
-</div>
-
-<div class="devGroup">
-  <span class="devLabel">Slot / Game hover effects</span>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devGameFx" class="devSelect" aria-label="Slot and game hover effects">
+    <select id="devBtnAnimPreset" class="devSelect" aria-label="Button animation preset">
       <option value="classic">Classic</option>
-      <option value="lift">Lift cards</option>
-      <option value="glass">Glass boost</option>
-      <option value="shimmer">Shimmer sweep</option>
-    </select>
-    <span class="hint" style="opacity:.85">Preview for tiles + wager cards</span>
-  </div>
-</div>
-
-<div class="devGroup">
-  <span class="devLabel">Button hover / click effects</span>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devButtonFx" class="devSelect" aria-label="Button hover effects">
-      <option value="classic">Classic</option>
+      <option value="stake">Stake pill (image 2 style)</option>
       <option value="gel">Gel pop</option>
       <option value="pulse">Pulse ring</option>
-      <option value="neon">Neon edge</option>
     </select>
-    <span class="hint" style="opacity:.85">Applies to CTA + wager action buttons</span>
+    <span class="hint" style="opacity:.85">Targets clickable buttons only</span>
+  </div>
+</div>
+
+<div class="devGroup">
+  <span class="devLabel">Container / border animations</span>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <select id="devContainerAnimPreset" class="devSelect" aria-label="Container animation preset">
+      <option value="classic">Classic</option>
+      <option value="lift">Lift + glow</option>
+      <option value="edge">Neon edge</option>
+      <option value="shimmer">Shimmer border</option>
+    </select>
+    <span class="hint" style="opacity:.85">Cards, panels, wager containers</span>
+  </div>
+</div>
+
+<div class="devGroup">
+  <span class="devLabel">Slot thumbnail placeholder animations</span>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <select id="devThumbAnimPreset" class="devSelect" aria-label="Thumbnail animation preset">
+      <option value="classic">Classic</option>
+      <option value="float">Float</option>
+      <option value="shine">Shine sweep</option>
+      <option value="focus">Focus glow</option>
+    </select>
+    <span class="hint" style="opacity:.85">Only poster/thumbnail blocks</span>
   </div>
 </div>
 
@@ -11785,66 +11801,34 @@ if(entry === 'streak') document.getElementById('walletClaimStreak')?.scrollIntoV
 })();
 </script>
 
-<script>
-(function(){
-  const KEY = 'clt_anim_preset_v1';
-  const DEFAULT = 'classic';
 
-  function getState(){
-    try{ return localStorage.getItem(KEY) || DEFAULT; }catch(_){ return DEFAULT; }
-  }
-  function setState(v){
-    try{ localStorage.setItem(KEY, v); }catch(_){}
-  }
-
-  function apply(){
-    const v = getState();
-    document.documentElement.setAttribute('data-anim', v);
-    const sel = document.getElementById('devAnimPreset');
-    if(sel) sel.value = v;
-  }
-
-  apply();
-
-  document.addEventListener('change', (e)=>{
-    const t = e.target;
-    if(t && t.id === 'devAnimPreset'){
-      setState(t.value);
-      apply();
-      try{
-        const label = t.options[t.selectedIndex]?.text || t.value;
-        toast('✨', 'Animation: ' + label);
-      }catch(_){}
-    }
-  }, true);
-
-  document.addEventListener('DOMContentLoaded', apply, {once:true});
-  window.__applyAnimPreset = apply;
-})();
-</script>
 
 <script>
 (function(){
-  const gameKey = 'clt_game_fx_v1';
-  const btnKey  = 'clt_btn_fx_v1';
+  const BTN_KEY='clt_btn_anim_v2';
+  const BOX_KEY='clt_container_anim_v2';
+  const THUMB_KEY='clt_thumb_anim_v2';
   function get(k,d){ try{return localStorage.getItem(k)||d;}catch(_){return d;} }
   function set(k,v){ try{localStorage.setItem(k,v);}catch(_){} }
   function apply(){
-    const g = get(gameKey,'classic');
-    const b = get(btnKey,'classic');
-    document.documentElement.setAttribute('data-gamefx', g);
-    document.documentElement.setAttribute('data-btnfx', b);
-    const sg = document.getElementById('devGameFx'); if(sg) sg.value = g;
-    const sb = document.getElementById('devButtonFx'); if(sb) sb.value = b;
+    const b=get(BTN_KEY,'classic');
+    const c=get(BOX_KEY,'classic');
+    const t=get(THUMB_KEY,'classic');
+    document.documentElement.setAttribute('data-btn-anim', b);
+    document.documentElement.setAttribute('data-container-anim', c);
+    document.documentElement.setAttribute('data-thumb-anim', t);
+    const sb=document.getElementById('devBtnAnimPreset'); if(sb) sb.value=b;
+    const sc=document.getElementById('devContainerAnimPreset'); if(sc) sc.value=c;
+    const st=document.getElementById('devThumbAnimPreset'); if(st) st.value=t;
   }
   apply();
   document.addEventListener('change',(e)=>{
-    const t=e.target;
-    if(!t) return;
-    if(t.id==='devGameFx'){ set(gameKey,t.value); apply(); try{toast('🎮','Game FX: '+t.options[t.selectedIndex].text);}catch(_){} }
-    if(t.id==='devButtonFx'){ set(btnKey,t.value); apply(); try{toast('🖱️','Button FX: '+t.options[t.selectedIndex].text);}catch(_){} }
+    const x=e.target; if(!x) return;
+    if(x.id==='devBtnAnimPreset'){ set(BTN_KEY,x.value); apply(); try{toast('🖱️','Buttons: '+x.options[x.selectedIndex].text);}catch(_){} }
+    if(x.id==='devContainerAnimPreset'){ set(BOX_KEY,x.value); apply(); try{toast('🧱','Containers: '+x.options[x.selectedIndex].text);}catch(_){} }
+    if(x.id==='devThumbAnimPreset'){ set(THUMB_KEY,x.value); apply(); try{toast('🖼️','Thumbnails: '+x.options[x.selectedIndex].text);}catch(_){} }
   },true);
-  window.__applyFxPlayground = apply;
+  window.__applyAnimPlaygroundV2 = apply;
 })();
 </script>
 
@@ -22771,7 +22755,16 @@ body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzL
     }
   }, true);
 
-  window.addEventListener('click', function(e){
+
+  // if a sidebar nav action is clicked while the game is open, close player so destination page is visible
+  document.addEventListener('click', function(e){
+    if(!document.body.classList.contains('ballzOpen')) return;
+    var navHit = e.target && e.target.closest ? e.target.closest('#leftSidebar .navBtn, #leftSidebar .sbCta') : null;
+    if(navHit){
+      try{ closeBallz(); }catch(_){ }
+    }
+  }, true);
+window.addEventListener('click', function(e){
     if(tryLaunchFromTarget(e.target)){
       e.preventDefault();
       e.stopPropagation();
