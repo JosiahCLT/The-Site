@@ -218,7 +218,10 @@ gap:10px;
 padding:10px 12px;
 border-radius:12px;
 border:1px solid transparent;
-background:transparent;
+background:
+radial-gradient(900px 560px at 12% 2%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
+radial-gradient(900px 560px at 92% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%),
+linear-gradient(180deg, var(--bg0), var(--bg1));
 color:var(--muted);
 cursor:pointer;
 font-weight:1100;
@@ -3321,7 +3324,7 @@ box-shadow:0 14px 40px rgba(0,0,0,.18);
 /* Rail container: soften background and fade it into page BG (background-only fade) */
 .centerBound .railBox{
   overflow:visible;
-  background:transparent;
+  background:radial-gradient(900px 560px at 12% 2%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%), radial-gradient(900px 560px at 92% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%), linear-gradient(180deg, var(--bg0), var(--bg1));
   border-color:color-mix(in srgb, var(--stroke) 40%, transparent);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 18px 70px rgba(0,0,0,.22);
 }
@@ -3958,8 +3961,8 @@ body:before{display:block !important;}
   inset:0;
   display:none;
   z-index:9999;
-  padding:var(--ballzInset, 52px);
-  background:transparent;
+  padding:var(--ballzInset, 18px);
+  background: var(--bg1);
   pointer-events:auto;
   box-sizing:border-box;
   overflow:auto;
@@ -7234,9 +7237,9 @@ All providers <span class="caret">▾</span>
   <span class="devLabel">Animation group: Spotlight hover</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <select id="devSpotlightAnimPreset" class="devSelect" aria-label="Spotlight hover animation preset">
-      <option value="off">Off (no spotlight)</option>
-      <option value="beam">Beam edge</option>
-      <option value="aurora">Aurora wash</option>
+      <option value="off">No spotlight</option>
+      <option value="beam">Spotlight: Beam</option>
+      <option value="aurora">Spotlight: Aurora</option>
     </select>
     <span class="hint" style="opacity:.85">Adds an extra highlight layer on hover for tiles/cards.</span>
   </div>
@@ -11867,7 +11870,8 @@ if(entry === 'streak') document.getElementById('walletClaimStreak')?.scrollIntoV
     const m=get(MENU_KEY,'classic');
     const c=get(BOX_KEY,'classic');
     const t=get(THUMB_KEY,'classic');
-    const s=get(SPOT_KEY,'off');
+    var s=get(SPOT_KEY,'off');
+    if(['off','beam','aurora'].indexOf(s)===-1){ s='off'; set(SPOT_KEY,'off'); }
     document.documentElement.setAttribute('data-action-btn-anim', a);
     document.documentElement.setAttribute('data-menu-btn-anim', m);
     document.documentElement.setAttribute('data-container-anim', c);
@@ -22655,7 +22659,7 @@ body.timerLeft .topbar .timerPill .timerBar{
   --ballzLeft: 260px;
   --ballzRight: 320px;
   --ballzTop: 62px;
-  --ballzInset: 52px;
+  --ballzInset: 18px;
 }
 /* prevent the main scroll from scrolling while player is open */
 body.ballzOpen #scroll{ overflow:hidden !important; }
