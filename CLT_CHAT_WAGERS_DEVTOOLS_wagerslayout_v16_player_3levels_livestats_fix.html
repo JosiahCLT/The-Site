@@ -92,10 +92,7 @@ margin:0;
 font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 color:var(--text);
 overflow:hidden;
-background:
-radial-gradient(900px 560px at 12% 2%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
-radial-gradient(900px 560px at 92% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%),
-linear-gradient(180deg, var(--bg0), var(--bg1));
+background:transparent;
 }
 body:before{
 content:"";
@@ -218,10 +215,7 @@ gap:10px;
 padding:10px 12px;
 border-radius:12px;
 border:1px solid transparent;
-background:
-radial-gradient(900px 560px at 12% 2%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
-radial-gradient(900px 560px at 92% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%),
-linear-gradient(180deg, var(--bg0), var(--bg1));
+background:transparent;
 color:var(--muted);
 cursor:pointer;
 font-weight:1100;
@@ -3962,7 +3956,10 @@ body:before{display:block !important;}
   display:none;
   z-index:9999;
   padding:var(--ballzInset, 18px);
-  background: var(--bg1);
+  background:
+radial-gradient(900px 560px at 12% 2%, rgba(251,44,54,.16), transparent 55%),
+radial-gradient(900px 560px at 92% 10%, rgba(255,122,24,.12), transparent 55%),
+linear-gradient(180deg, var(--bg0), var(--bg1));
   pointer-events:auto;
   box-sizing:border-box;
   overflow:auto;
@@ -6438,51 +6435,6 @@ html[data-anim="off"] .modeTile:hover{
 @media (max-width:1500px){ .wagersTools{grid-template-columns:repeat(3,minmax(0,1fr));} }
 @media (max-width:980px){ .wagersTools{grid-template-columns:1fr 1fr;} }
 
-/* Dev FX playground hooks (clear target groups) */
-:root{--btnPressY:1px}
-
-/* 1) ACTION BUTTONS (deposit/withdraw/claim/accept/send/etc) */
-html[data-action-btn-anim="stake"] :is(.btn,.sbCta,.playPill,.wAcceptBtn,.wLaunchBtn){
-  border-radius:999px;
-  background:linear-gradient(180deg, rgba(10,12,24,.96), rgba(3,5,13,.98));
-  border-color:rgba(255,255,255,.14);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 10px 18px rgba(0,0,0,.34);
-}
-html[data-action-btn-anim="stake"] :is(.btn,.sbCta,.playPill,.wAcceptBtn,.wLaunchBtn):hover{transform:translateY(-1px);filter:brightness(1.08)}
-html[data-action-btn-anim="stake"] :is(.btn,.sbCta,.playPill,.wAcceptBtn,.wLaunchBtn):active{transform:translateY(var(--btnPressY))}
-html[data-action-btn-anim="gel"] :is(.btn,.sbCta,.playPill,.wAcceptBtn,.wLaunchBtn){transition:transform .14s ease, filter .14s ease, box-shadow .14s ease}
-html[data-action-btn-anim="gel"] :is(.btn,.sbCta,.playPill,.wAcceptBtn,.wLaunchBtn):hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.08)}
-html[data-action-btn-anim="pulse"] :is(.btn,.sbCta,.playPill,.wAcceptBtn,.wLaunchBtn):hover{box-shadow:0 0 0 3px rgba(255,120,80,.24),0 14px 30px rgba(0,0,0,.34)}
-
-/* 2) MENU / ICON BUTTONS (sidebar, arrows, ghost controls, right rail controls) */
-html[data-menu-btn-anim="lift"] :is(.navBtn,.ghostBtn,.wPageBtn,.pCtrl,.rndBtn,.railArrow,.todayHead .ghostBtn){transition:transform .14s ease, filter .14s ease, box-shadow .14s ease}
-html[data-menu-btn-anim="lift"] :is(.navBtn,.ghostBtn,.wPageBtn,.pCtrl,.rndBtn,.railArrow,.todayHead .ghostBtn):hover{transform:translateY(-2px);filter:brightness(1.07)}
-html[data-menu-btn-anim="ring"] :is(.navBtn,.ghostBtn,.wPageBtn,.pCtrl,.rndBtn,.railArrow,.todayHead .ghostBtn):hover{box-shadow:0 0 0 2px rgba(120,220,255,.28),0 10px 22px rgba(0,0,0,.28)}
-html[data-menu-btn-anim="gloss"] :is(.navBtn,.ghostBtn,.wPageBtn,.pCtrl,.rndBtn,.railArrow,.todayHead .ghostBtn){background-image:linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.22));}
-
-/* 3) CONTAINERS / BORDERS */
-html[data-container-anim="lift"] :is(.panel,.wagerCard,.wInfo,.wTeams,.wPlayerTile,.tile,.modeTile){transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
-html[data-container-anim="lift"] :is(.wagerCard,.tile,.modeTile):hover{transform:translateY(-4px);box-shadow:0 24px 80px rgba(0,0,0,.38)}
-html[data-container-anim="edge"] :is(.panel,.wagerCard,.wInfo,.wTeams,.wPlayerTile,.tile,.modeTile){border-color:color-mix(in srgb, var(--accent) 28%, var(--stroke));}
-html[data-container-anim="edge"] :is(.wagerCard,.tile,.modeTile):hover{box-shadow:0 0 0 1px rgba(120,220,255,.35),0 0 30px rgba(120,220,255,.18)}
-html[data-container-anim="shimmer"] :is(.wagerCard,.tile,.modeTile){position:relative;overflow:hidden}
-html[data-container-anim="shimmer"] :is(.wagerCard,.tile,.modeTile)::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.14) 50%, transparent 70%);transform:translateX(-120%);transition:transform .6s ease}
-html[data-container-anim="shimmer"] :is(.wagerCard,.tile,.modeTile):hover::after{transform:translateX(120%)}
-
-/* 4) GAME THUMBNAILS / PLACEHOLDERS */
-html[data-thumb-anim="float"] :is(.tile .poster,.wThumb .poster,.wTicketMid .poster){transition:transform .18s ease, box-shadow .18s ease}
-html[data-thumb-anim="float"] :is(.tile:hover .poster,.wThumb:hover .poster,.wagerCard:hover .wTicketMid .poster){transform:translateY(-4px) scale(1.02);box-shadow:0 18px 50px rgba(0,0,0,.36)}
-html[data-thumb-anim="shine"] :is(.tile .poster,.wThumb .poster,.wTicketMid .poster){position:relative;overflow:hidden}
-html[data-thumb-anim="shine"] :is(.tile .poster,.wThumb .poster,.wTicketMid .poster)::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);transform:translateX(-120%);transition:transform .55s ease}
-html[data-thumb-anim="shine"] :is(.tile:hover .poster,.wThumb:hover .poster,.wagerCard:hover .wTicketMid .poster)::before{transform:translateX(120%)}
-html[data-thumb-anim="focus"] :is(.tile .poster,.wThumb .poster,.wTicketMid .poster){border-color:color-mix(in srgb, var(--accent2) 28%, var(--stroke));box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 0 34px rgba(140,220,255,.16)}
-
-/* 5) SPOTLIGHT HOVER */
-html[data-spotlight-anim="beam"] :is(.wagerCard,.tile,.modeTile,.hub2Spotlight .panel){box-shadow:0 0 0 1px rgba(255,255,255,.04), inset 0 0 0 1px rgba(255,255,255,.03)}
-html[data-spotlight-anim="beam"] :is(.wagerCard,.tile,.modeTile,.hub2Spotlight .panel):hover{box-shadow:0 0 0 1px rgba(160,220,255,.34), 0 0 46px rgba(120,180,255,.20)}
-html[data-spotlight-anim="aurora"] :is(.wagerCard,.tile,.modeTile,.hub2Spotlight .panel){position:relative;overflow:hidden}
-html[data-spotlight-anim="aurora"] :is(.wagerCard,.tile,.modeTile,.hub2Spotlight .panel)::before{content:"";position:absolute;inset:-35% -15%;pointer-events:none;background:radial-gradient(260px 140px at 20% 20%, rgba(120,220,255,.13), transparent 62%), radial-gradient(260px 140px at 80% 80%, rgba(255,120,80,.10), transparent 62%);opacity:0;transition:opacity .2s ease}
-html[data-spotlight-anim="aurora"] :is(.wagerCard,.tile,.modeTile,.hub2Spotlight .panel):hover::before{opacity:1}
 /* Chat wager announcement cards */
 .chatMsg.wager .chatBubble{border-color: color-mix(in srgb, var(--stroke) 60%, rgba(255,120,80,.22));}
 .chatWagerCard{
@@ -7180,70 +7132,6 @@ All providers <span class="caret">▾</span>
         <small class="devNote">Turns HOT/LIVE/FEATURED/etc badges on/off across the site.</small>
       </div>
 
-
-<div class="devGroup">
-  <span class="devLabel">Animation group: Action buttons</span>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devActionBtnAnimPreset" class="devSelect" aria-label="Action button animation preset">
-      <option value="classic">Classic</option>
-      <option value="stake">Stake pill style (like your image)</option>
-      <option value="gel">Gel pop</option>
-      <option value="pulse">Pulse ring</option>
-    </select>
-    <span class="hint" style="opacity:.85">Targets primary action buttons (Deposit, Withdraw, Claim, Accept, Send).</span>
-  </div>
-</div>
-
-<div class="devGroup">
-  <span class="devLabel">Animation group: Menu / icon buttons</span>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devMenuBtnAnimPreset" class="devSelect" aria-label="Menu button animation preset">
-      <option value="classic">Classic</option>
-      <option value="lift">Lift</option>
-      <option value="ring">Glow ring</option>
-      <option value="gloss">Gloss overlay</option>
-    </select>
-    <span class="hint" style="opacity:.85">Targets sidebar buttons, arrow controls, and small icon buttons.</span>
-  </div>
-</div>
-
-<div class="devGroup">
-  <span class="devLabel">Animation group: Containers / borders</span>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devContainerAnimPreset" class="devSelect" aria-label="Container animation preset">
-      <option value="classic">Classic</option>
-      <option value="lift">Lift + glow</option>
-      <option value="edge">Neon edge</option>
-      <option value="shimmer">Shimmer border</option>
-    </select>
-    <span class="hint" style="opacity:.85">Targets card, panel, and ticket container edges.</span>
-  </div>
-</div>
-
-<div class="devGroup">
-  <span class="devLabel">Animation group: Game thumbnail placeholders</span>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devThumbAnimPreset" class="devSelect" aria-label="Thumbnail animation preset">
-      <option value="classic">Classic</option>
-      <option value="float">Float</option>
-      <option value="shine">Shine sweep</option>
-      <option value="focus">Focus glow</option>
-    </select>
-    <span class="hint" style="opacity:.85">Targets slot posters and ticket thumbnail placeholders only.</span>
-  </div>
-</div>
-
-<div class="devGroup">
-  <span class="devLabel">Animation group: Spotlight hover</span>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devSpotlightAnimPreset" class="devSelect" aria-label="Spotlight hover animation preset">
-      <option value="off">No spotlight</option>
-      <option value="beam">Spotlight: Beam</option>
-      <option value="aurora">Spotlight: Aurora</option>
-    </select>
-    <span class="hint" style="opacity:.85">Adds an extra highlight layer on hover for tiles/cards.</span>
-  </div>
-</div>
 
 <div class="devGroup">
         <span class="devLabel">VIP Tier</span>
@@ -11856,44 +11744,20 @@ if(entry === 'streak') document.getElementById('walletClaimStreak')?.scrollIntoV
 
 
 
+
+
 <script>
 (function(){
-  const ACTION_KEY='clt_action_btn_anim_v3';
-  const MENU_KEY='clt_menu_btn_anim_v3';
-  const BOX_KEY='clt_container_anim_v3';
-  const THUMB_KEY='clt_thumb_anim_v3';
-  const SPOT_KEY='clt_spotlight_anim_v1';
-  function get(k,d){ try{return localStorage.getItem(k)||d;}catch(_){return d;} }
-  function set(k,v){ try{localStorage.setItem(k,v);}catch(_){} }
-  function apply(){
-    const a=get(ACTION_KEY,'classic');
-    const m=get(MENU_KEY,'classic');
-    const c=get(BOX_KEY,'classic');
-    const t=get(THUMB_KEY,'classic');
-    var s=get(SPOT_KEY,'off');
-    if(['off','beam','aurora'].indexOf(s)===-1){ s='off'; set(SPOT_KEY,'off'); }
-    document.documentElement.setAttribute('data-action-btn-anim', a);
-    document.documentElement.setAttribute('data-menu-btn-anim', m);
-    document.documentElement.setAttribute('data-container-anim', c);
-    document.documentElement.setAttribute('data-thumb-anim', t);
-    if(s === 'off' || s === 'classic') document.documentElement.removeAttribute('data-spotlight-anim');
-    else document.documentElement.setAttribute('data-spotlight-anim', s);
-    const sa=document.getElementById('devActionBtnAnimPreset'); if(sa) sa.value=a;
-    const sm=document.getElementById('devMenuBtnAnimPreset'); if(sm) sm.value=m;
-    const sc=document.getElementById('devContainerAnimPreset'); if(sc) sc.value=c;
-    const st=document.getElementById('devThumbAnimPreset'); if(st) st.value=t;
-    const ss=document.getElementById('devSpotlightAnimPreset'); if(ss) ss.value=s;
-  }
-  apply();
-  document.addEventListener('change',(e)=>{
-    const x=e.target; if(!x) return;
-    if(x.id==='devActionBtnAnimPreset'){ set(ACTION_KEY,x.value); apply(); try{toast('🖱️','Action buttons: '+x.options[x.selectedIndex].text);}catch(_){} }
-    if(x.id==='devMenuBtnAnimPreset'){ set(MENU_KEY,x.value); apply(); try{toast('🧭','Menu buttons: '+x.options[x.selectedIndex].text);}catch(_){} }
-    if(x.id==='devContainerAnimPreset'){ set(BOX_KEY,x.value); apply(); try{toast('🧱','Containers: '+x.options[x.selectedIndex].text);}catch(_){} }
-    if(x.id==='devThumbAnimPreset'){ set(THUMB_KEY,x.value); apply(); try{toast('🖼️','Thumbnails: '+x.options[x.selectedIndex].text);}catch(_){} }
-    if(x.id==='devSpotlightAnimPreset'){ set(SPOT_KEY,x.value); apply(); try{toast('🔦','Spotlight hover: '+x.options[x.selectedIndex].text);}catch(_){} }
-  },true);
-  window.__applyAnimPlaygroundV3 = apply;
+  try{
+    ['clt_action_btn_anim_v3','clt_menu_btn_anim_v3','clt_container_anim_v3','clt_thumb_anim_v3','clt_spotlight_anim_v1'].forEach(function(k){ localStorage.removeItem(k); });
+  }catch(_){ }
+  try{
+    document.documentElement.removeAttribute('data-action-btn-anim');
+    document.documentElement.removeAttribute('data-menu-btn-anim');
+    document.documentElement.removeAttribute('data-container-anim');
+    document.documentElement.removeAttribute('data-thumb-anim');
+    document.documentElement.removeAttribute('data-spotlight-anim');
+  }catch(_){ }
 })();
 </script>
 
