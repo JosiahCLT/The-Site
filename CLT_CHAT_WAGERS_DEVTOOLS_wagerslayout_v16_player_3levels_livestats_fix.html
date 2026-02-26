@@ -7207,7 +7207,7 @@ All providers <span class="caret">▾</span>
   <span class="devLabel">Animation group: Spotlight hover</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <select id="devSpotlightAnimPreset" class="devSelect" aria-label="Spotlight hover animation preset">
-      <option value="classic">Classic</option>
+      <option value="classic">Classic (no spotlight)</option>
       <option value="beam">Beam edge</option>
       <option value="aurora">Aurora wash</option>
     </select>
@@ -11845,7 +11845,8 @@ if(entry === 'streak') document.getElementById('walletClaimStreak')?.scrollIntoV
     document.documentElement.setAttribute('data-menu-btn-anim', m);
     document.documentElement.setAttribute('data-container-anim', c);
     document.documentElement.setAttribute('data-thumb-anim', t);
-    document.documentElement.setAttribute('data-spotlight-anim', s);
+    if(s === 'classic') document.documentElement.removeAttribute('data-spotlight-anim');
+    else document.documentElement.setAttribute('data-spotlight-anim', s);
     const sa=document.getElementById('devActionBtnAnimPreset'); if(sa) sa.value=a;
     const sm=document.getElementById('devMenuBtnAnimPreset'); if(sm) sm.value=m;
     const sc=document.getElementById('devContainerAnimPreset'); if(sc) sc.value=c;
