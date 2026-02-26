@@ -3959,19 +3959,18 @@ body:before{display:block !important;}
   display:none;
   z-index:9999;
   padding:var(--ballzInset, 52px);
-  background:
-radial-gradient(900px 560px at 12% 2%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
-radial-gradient(900px 560px at 92% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%),
-linear-gradient(180deg, var(--bg0), var(--bg1));
-  pointer-events:none;
+  background:transparent;
+  pointer-events:auto;
   box-sizing:border-box;
+  overflow:auto;
 }
 .gameOverlay.show{display:block}
 
 .gameShell{
   pointer-events:auto;
   width:100%;
-  height:100%;
+  min-height:100%;
+  height:auto;
   border-radius:0px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.10);
@@ -3984,8 +3983,9 @@ linear-gradient(180deg, var(--bg0), var(--bg1));
 
 .playerWrap{
   position:relative;
-  flex:1;
-  min-height:0;
+  flex:none;
+  height:min(68vh, 760px);
+  min-height:460px;
   display:flex;
   flex-direction:column;
   overflow:hidden;
@@ -4043,6 +4043,33 @@ body.ballzTheatre .gameOverlay{padding:6px}
 body.ballzFullscreen .gameOverlay{padding:0}
 body.ballzFullscreen .gameShell{border-radius:0;border:0;box-shadow:none}
 body.ballzFullscreen .playerBottomBar{display:none}
+
+
+.gameMeta{padding:14px;display:flex;flex-direction:column;gap:12px;background:transparent}
+.metaCard{border:1px solid var(--stroke);border-radius:16px;background:color-mix(in srgb, var(--panel2) 76%, transparent);padding:14px}
+.metaHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.metaHead .t{font-weight:1200;font-size:30px}
+.metaHead .sub{font-weight:1000;color:rgba(255,255,255,.7)}
+.expandBtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--stroke);background:rgba(0,0,0,.22);color:rgba(255,255,255,.86)}
+.expandBtn[aria-expanded="true"]{background:rgba(255,255,255,.08)}
+.metaTabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.metaTab{height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--stroke);background:rgba(0,0,0,.18);color:rgba(255,255,255,.9);font-weight:1100}
+.metaTab.active{background:rgba(120,180,255,.18);border-color:rgba(120,180,255,.40)}
+.metaTable{width:100%;border-collapse:collapse}
+.metaTable th,.metaTable td{padding:12px 10px;border-bottom:1px solid color-mix(in srgb, var(--stroke) 75%, transparent);text-align:left}
+.metaTable th{color:rgba(170,205,226,.95);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.metaTable tr:last-child td{border-bottom:none}
+.recRow{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.recItem{border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.24));padding:8px}
+.recPoster{height:120px;border-radius:10px;background:linear-gradient(135deg, rgba(120,180,255,.26), rgba(255,120,80,.22));display:grid;place-items:center;font-weight:1200}
+.recName{margin-top:8px;font-weight:1100;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feedTools{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px}
+.feedTools .selectWrap select{height:38px;border-radius:10px}
+body.ballzTheatre .playerWrap{height:min(78vh, 860px)}
+body.ballzFullscreen .playerWrap{height:100vh;min-height:0}
+body.ballzFullscreen .gameMeta{display:none}
+@media (max-width:1400px){ .recRow{grid-template-columns:repeat(6,minmax(0,1fr));} }
+@media (max-width:1100px){ .recRow{grid-template-columns:repeat(4,minmax(0,1fr));} }
 
 /* v35: clean, flush tools row + embedded Random button (provider picker) */
 .gridToolsRow{
@@ -7207,7 +7234,7 @@ All providers <span class="caret">▾</span>
   <span class="devLabel">Animation group: Spotlight hover</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <select id="devSpotlightAnimPreset" class="devSelect" aria-label="Spotlight hover animation preset">
-      <option value="classic">Classic (no spotlight)</option>
+      <option value="off">Off (no spotlight)</option>
       <option value="beam">Beam edge</option>
       <option value="aurora">Aurora wash</option>
     </select>
@@ -11840,12 +11867,12 @@ if(entry === 'streak') document.getElementById('walletClaimStreak')?.scrollIntoV
     const m=get(MENU_KEY,'classic');
     const c=get(BOX_KEY,'classic');
     const t=get(THUMB_KEY,'classic');
-    const s=get(SPOT_KEY,'classic');
+    const s=get(SPOT_KEY,'off');
     document.documentElement.setAttribute('data-action-btn-anim', a);
     document.documentElement.setAttribute('data-menu-btn-anim', m);
     document.documentElement.setAttribute('data-container-anim', c);
     document.documentElement.setAttribute('data-thumb-anim', t);
-    if(s === 'classic') document.documentElement.removeAttribute('data-spotlight-anim');
+    if(s === 'off' || s === 'classic') document.documentElement.removeAttribute('data-spotlight-anim');
     else document.documentElement.setAttribute('data-spotlight-anim', s);
     const sa=document.getElementById('devActionBtnAnimPreset'); if(sa) sa.value=a;
     const sm=document.getElementById('devMenuBtnAnimPreset'); if(sm) sm.value=m;
@@ -14388,6 +14415,45 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
 
         <div class="pBarRight"></div>
       </div>
+    </div>
+
+    <div class="gameMeta" id="gameMeta">
+      <section class="metaCard" id="gameInfoCard">
+        <div class="metaHead">
+          <div>
+            <div class="t" id="gameMetaTitle">Ballz</div>
+            <div class="sub">Hacksaw Gaming</div>
+          </div>
+          <button class="expandBtn" id="gameInfoToggle" aria-expanded="false" type="button">⌄</button>
+        </div>
+        <div id="gameInfoBody" hidden>
+          <div class="metaTabs" id="gameInfoTabs">
+            <button class="metaTab active" data-info-tab="big" type="button">Big Wins</button>
+            <button class="metaTab" data-info-tab="lucky" type="button">Lucky Wins</button>
+            <button class="metaTab" data-info-tab="challenges" type="button">Challenges</button>
+            <button class="metaTab" data-info-tab="description" type="button">Description</button>
+          </div>
+          <div id="gameInfoTableWrap"></div>
+        </div>
+      </section>
+
+      <section class="metaCard">
+        <div class="metaHead"><div class="t" style="font-size:28px">Recommended</div></div>
+        <div class="recRow" id="gameRecRow"></div>
+      </section>
+
+      <section class="metaCard">
+        <div class="metaTabs" id="gameFeedTabs">
+          <button class="metaTab active" data-feed-tab="my" type="button">My Games</button>
+          <button class="metaTab" data-feed-tab="all" type="button">All Games</button>
+          <button class="metaTab" data-feed-tab="high" type="button">High Rollers</button>
+          <button class="metaTab" data-feed-tab="description" type="button">Description</button>
+        </div>
+        <div class="feedTools">
+          <div class="selectWrap"><select id="gameFeedLimit"><option>10</option><option>20</option><option>40</option></select></div>
+        </div>
+        <div id="gameFeedTableWrap"></div>
+      </section>
     </div>
   </div>
 </div>
@@ -22617,6 +22683,83 @@ body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzL
   var btnTheatre = byId('btnTheatre');
   var btnFull    = byId('btnFull');
 
+
+  function setupGameMeta(){
+    if(window.__cltGameMetaInit) return;
+    window.__cltGameMetaInit = true;
+    var infoBody = byId('gameInfoBody');
+    var infoToggle = byId('gameInfoToggle');
+    var infoTabs = Array.prototype.slice.call(document.querySelectorAll('#gameInfoTabs .metaTab'));
+    var infoWrap = byId('gameInfoTableWrap');
+    var feedTabs = Array.prototype.slice.call(document.querySelectorAll('#gameFeedTabs .metaTab'));
+    var feedWrap = byId('gameFeedTableWrap');
+    var feedLimit = byId('gameFeedLimit');
+    var recRow = byId('gameRecRow');
+
+    var recNames = ['Superstar 7s','Knight Fall','Lion Stacks','Crystal Peak','Yummy Mummies','Experiment X','Le Fisherman','Ball Drop'];
+    if(recRow){
+      recRow.innerHTML = recNames.map(function(n){ return '<div class="recItem"><div class="recPoster">'+n.split(' ')[0]+'</div><div class="recName">'+n+'</div></div>'; }).join('');
+    }
+
+    function infoTable(tab){
+      if(tab === 'description'){
+        return '<table class="metaTable"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>House Edge</td><td>3.50% (placeholder)</td></tr><tr><td>Provider</td><td>Hacksaw Gaming</td></tr><tr><td>Mode</td><td>1v1 skill wager</td></tr></tbody></table>';
+      }
+      var rows = [
+        ['#1','dbzima','Feb 16, 2026','250,000,000.00 GC','30x','7,500,000,000.00 GC'],
+        ['#2','Hidden','Feb 19, 2026','500,000,000.00 GC','13x','6,398,000,000.00 GC'],
+        ['#3','3hunn152','Feb 16, 2026','250,000,000.00 GC','21x','5,184,500,000.00 GC']
+      ];
+      var head = '<thead><tr><th>Rank</th><th>User</th><th>Date</th><th>Amount</th><th>Multiplier</th><th>Winnings</th></tr></thead>';
+      var body = '<tbody>'+rows.map(function(r){ return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>'; }).join('')+'</tbody>';
+      return '<table class="metaTable">'+head+body+'</table>';
+    }
+
+    function feedTable(tab){
+      if(tab === 'description') return '<table class="metaTable"><thead><tr><th>Game</th><th>Note</th></tr></thead><tbody><tr><td>House Edge</td><td>Placeholder descriptions until game catalog is finalized.</td></tr></tbody></table>';
+      var lim = Math.max(1, parseInt(feedLimit && feedLimit.value || '10', 10));
+      var base = [
+        ['Experiment X','6:04 AM','10,000.00 GC','0.00x','-10,000.00 GC'],
+        ['Experiment X','6:04 AM','8,000.00 GC','0.00x','-8,000.00 GC'],
+        ['Experiment X','6:04 AM','8,000.00 GC','0.45x','-4,400.00 GC'],
+        ['Ball Drop','6:10 AM','6,500.00 GC','1.35x','8,775.00 GC']
+      ];
+      var rows = [];
+      for(var i=0;i<lim;i++) rows.push(base[i % base.length]);
+      if(tab === 'high') rows = rows.map(function(r,idx){ return [r[0],'#'+(idx+1), (50000-idx*420).toLocaleString()+'.00 GC', (2.1-idx*0.02).toFixed(2)+'x', (90000-idx*700).toLocaleString()+'.00 GC']; });
+      if(tab === 'all') rows = rows.map(function(r){ return [r[0],r[1],r[2],r[3],r[4]]; });
+      var headMy = '<thead><tr><th>Game</th><th>Time</th><th>Amount</th><th>Multiplier</th><th>Result</th></tr></thead>';
+      var headHigh = '<thead><tr><th>Game</th><th>Rank</th><th>Amount</th><th>Multiplier</th><th>Winnings</th></tr></thead>';
+      var head = (tab === 'high') ? headHigh : headMy;
+      var body = '<tbody>'+rows.map(function(r){ return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>'; }).join('')+'</tbody>';
+      return '<table class="metaTable">'+head+body+'</table>';
+    }
+
+    function setInfo(tab){
+      infoTabs.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-info-tab')===tab); });
+      if(infoWrap) infoWrap.innerHTML = infoTable(tab);
+    }
+    function setFeed(tab){
+      feedTabs.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-feed-tab')===tab); });
+      if(feedWrap) feedWrap.innerHTML = feedTable(tab);
+    }
+
+    infoTabs.forEach(function(b){ b.addEventListener('click', function(){ setInfo(b.getAttribute('data-info-tab')); }); });
+    feedTabs.forEach(function(b){ b.addEventListener('click', function(){ setFeed(b.getAttribute('data-feed-tab')); }); });
+    if(feedLimit) feedLimit.addEventListener('change', function(){ var active=document.querySelector('#gameFeedTabs .metaTab.active'); setFeed(active ? active.getAttribute('data-feed-tab') : 'my'); });
+    if(infoToggle){
+      infoToggle.addEventListener('click', function(){
+        var on = infoBody && infoBody.hidden;
+        if(infoBody) infoBody.hidden = !on;
+        infoToggle.setAttribute('aria-expanded', on ? 'true' : 'false');
+        infoToggle.textContent = on ? '⌃' : '⌄';
+      });
+    }
+
+    setInfo('big');
+    setFeed('my');
+  }
+
   function toastSafe(icon, msg){
     try{
       if(typeof toast === 'function') toast(icon, msg);
@@ -22675,6 +22818,7 @@ body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzL
     overlay.classList.add('show');
     overlay.setAttribute('aria-hidden','false');
     document.body.classList.add('ballzOpen');
+    setupGameMeta();
     syncBallzRoute(true);
 
     try{ frame.srcdoc = tpl.innerHTML; }catch(e){}
