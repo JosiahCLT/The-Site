@@ -3955,14 +3955,11 @@ body:before{display:block !important;}
 /* Embedded game overlay (player-style, not modal) */
 .gameOverlay{
   position:fixed;
-  top:var(--ballzTop, 0px);
-  left:var(--ballzLeft, 0px);
-  right:var(--ballzRight, 0px);
-  bottom:0;
+  inset:0;
   display:none;
   z-index:9999;
-  padding:var(--ballzInset, 18px);
-  background:color-mix(in srgb, var(--bg) 92%, #000 8%);
+  padding:var(--ballzInset, 26px);
+  background:linear-gradient(180deg, #06070d, #0a0c15 58%, #080a13);
   pointer-events:auto;
   box-sizing:border-box;
 }
@@ -4036,6 +4033,17 @@ body:before{display:block !important;}
 .pCtrl:hover{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.16);}
 .pCtrl.active{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.20); color:rgba(255,255,255,.95);}
 .pCtrl svg{width:18px;height:18px}
+
+body.ballzOpen .app,
+body.ballzOpen .drawer,
+body.ballzOpen .drawerShade,
+body.ballzOpen .devpanel{display:none !important}
+
+body.ballzTheatre .gameOverlay{padding:10px}
+
+body.ballzFullscreen .gameOverlay{padding:0}
+body.ballzFullscreen .gameShell{border-radius:0;border:0;box-shadow:none}
+body.ballzFullscreen .playerBottomBar{display:none}
 
 /* v35: clean, flush tools row + embedded Random button (provider picker) */
 .gridToolsRow{
@@ -22453,17 +22461,12 @@ body.timerLeft .topbar .timerPill .timerBar{
 
 <style id="clt-ballz-player-style-v14">
 :root{
-  --ballzLeft: 260px;
-  --ballzRight: 320px;
-  --ballzTop: 62px;
+  --ballzInset: 26px;
 }
 /* prevent the main scroll from scrolling while player is open */
 body.ballzOpen #scroll{ overflow:hidden !important; }
 
 /* Theatre = hide chat panel so the player gets wide */
-
-/* Keep overlay in sync with measured sidebar/chat widths */
-body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzLeft) !important; right: var(--ballzRight) !important; bottom:0 !important; }
 </style>
 
 <script id="clt-ballz-player-boot-v14">
@@ -22490,18 +22493,19 @@ body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzL
     }catch(e){}
   }
 
-  function measure(){
-    try{
-      var ls = byId('leftSidebar');
-      var rs = byId('todayPanel');
-      var top = document.querySelector('.top');
+  function measure(){}
 
-      var lsW = ls ? Math.round(ls.getBoundingClientRect().width) : 0;
-      var rsW = rs ? Math.round(rs.getBoundingClientRect().width) : 0;
-      var topH = top ? Math.round(top.getBoundingClientRect().height) : 0;
-document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
-      document.documentElement.style.setProperty('--ballzRight', rsW + 'px');
-      document.documentElement.style.setProperty('--ballzTop', topH + 'px');
+  function syncBallzRoute(open){
+    try{
+      var path = window.location.pathname || '';
+      var hash = '#game/ballz';
+      if(open){
+        if(window.location.hash !== hash){
+          history.pushState({ballz:true}, '', path + hash);
+        }
+      }else if(window.location.hash === hash){
+        history.pushState({}, '', path + '#casino');
+      }
     }catch(e){}
   }
 
@@ -22527,6 +22531,7 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
     overlay.classList.add('show');
     overlay.setAttribute('aria-hidden','false');
     document.body.classList.add('ballzOpen');
+    syncBallzRoute(true);
 
     try{ frame.srcdoc = tpl.innerHTML; }catch(e){}
     frame.onload = function(){ postInitBalances(); };
@@ -22539,7 +22544,9 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
     overlay.setAttribute('aria-hidden','true');
     document.body.classList.remove('ballzOpen');
     document.body.classList.remove('ballzTheatre');
+    document.body.classList.remove('ballzFullscreen');
     if(btnTheatre) btnTheatre.classList.remove('active');
+    syncBallzRoute(false);
 
     try{ frame.srcdoc = ''; }catch(e){}
     measure();
@@ -22572,7 +22579,6 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
   function setTheatre(on){
     document.body.classList.toggle('ballzTheatre', !!on);
     if(btnTheatre) btnTheatre.classList.toggle('active', !!on);
-    measure();
   }
   if(btnTheatre){
     btnTheatre.addEventListener('click', function(e){
@@ -22755,8 +22761,15 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
     if(document.body.classList.contains('ballzOpen')) measure();
   });
 
+  window.addEventListener('popstate', function(){
+    if(window.location.hash === '#game/ballz') openBallz();
+    else if(document.body.classList.contains('ballzOpen')) closeBallz();
+  });
+
   // initial measure so offsets are correct even before first open
   measure();
+
+  if(window.location.hash === '#game/ballz') openBallz();
 })();
 </script>
 
