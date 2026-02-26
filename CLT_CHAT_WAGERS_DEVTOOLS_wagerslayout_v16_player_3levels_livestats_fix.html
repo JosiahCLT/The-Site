@@ -277,7 +277,7 @@ box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent), 0 22px 
 border:1px solid var(--stroke);
 background:var(--railCoverSolid, #0b0b12);
 color:var(--text);
-padding:12px;
+padding:10px;
 border-radius:18px;
 font-weight:1000;
 cursor:pointer;
@@ -301,7 +301,7 @@ box-shadow:0 18px 70px color-mix(in srgb, var(--accent) 18%, transparent);
 body[data-theme="ice"] .btn.primary{color:#f8fafc}
 .pill{
 display:flex;align-items:center;justify-content:space-between;gap:10px;
-padding:12px;
+padding:10px;
 border-radius:18px;
 border:1px solid var(--stroke);
 background:color-mix(in srgb, var(--panel2) 70%, transparent);
@@ -470,7 +470,7 @@ overflow:hidden;
 position:relative;
 }
 /* Modes card refinements (keep it clean, no header) */
-.modesCard{height:auto; padding:12px; gap:10px}
+.modesCard{height:auto; padding:10px; gap:10px}
 .modesCard:before{opacity:.55}
 /* Modes card skin override */
 .modesCard{background: rgba(0,0,0,.16); border:1px solid rgba(255,255,255,.10); box-shadow: 0 18px 70px rgba(0,0,0,.40), 0 0 0 2px rgba(255,255,255,.08)}
@@ -1631,11 +1631,11 @@ box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 .chatHint{color:var(--muted);font-weight:1000;font-size:11px;text-align:center}
 .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.kpi{padding:12px;border-radius:18px;border:1px solid var(--stroke);background:color-mix(in srgb, var(--panel2) 85%, transparent)}
+.kpi{padding:10px;border-radius:18px;border:1px solid var(--stroke);background:color-mix(in srgb, var(--panel2) 85%, transparent)}
 .kpi b{display:block;font-size:20px;font-weight:1100}
 .kpi span{display:block;margin-top:3px;color:var(--muted);font-weight:1000;font-size:12px}
 .feed{display:flex;flex-direction:column;gap:10px}
-.item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border-radius:18px;border:1px solid var(--stroke);background:color-mix(in srgb, var(--panel2) 85%, transparent)}
+.item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border-radius:18px;border:1px solid var(--stroke);background:color-mix(in srgb, var(--panel2) 85%, transparent)}
 .item .l{display:flex;align-items:center;gap:10px}
 .pillDot{width:10px;height:10px;border-radius:999px;background:var(--accent)}
 .item small{display:block;color:var(--muted);font-weight:1000;margin-top:2px}
@@ -1869,9 +1869,9 @@ overflow:hidden;
 .todayBets .betsStats .kpi b{font-size:18px}
 
 /* ---- Right-rail Quests tab ---- */
-.todayQuests{display:flex;flex-direction:column;gap:10px;padding:12px;min-height:0}
+.todayQuests{display:flex;flex-direction:column;gap:10px;padding:10px;min-height:0}
 .todayQuests .questMiniList{display:flex;flex-direction:column;gap:10px;overflow:auto;min-height:0}
-.questMiniCard{border:1px solid var(--stroke);border-radius:18px;padding:12px;background:color-mix(in srgb, var(--panel2) 88%, transparent)}
+.questMiniCard{border:1px solid var(--stroke);border-radius:18px;padding:10px;background:color-mix(in srgb, var(--panel2) 88%, transparent)}
 .questMiniTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .questMiniTitle{font-weight:1100}
 .questMiniMeta{color:var(--muted);font-size:12px;font-weight:900;white-space:nowrap}
@@ -2136,7 +2136,7 @@ background:color-mix(in srgb, var(--panel2) 88%, transparent);
 }
 .walletNote{margin-top:12px;border-radius:16px;border:1px solid var(--stroke);background:var(--railCoverSolid, #0b0b12);padding:14px;color:var(--muted);font-weight:1000}
 .walletSub{margin-top:12px}
-.streakWrap{padding:12px;border:1px solid var(--stroke);border-radius:18px;background:color-mix(in srgb, var(--panel2) 70%, transparent)}
+.streakWrap{padding:10px;border:1px solid var(--stroke);border-radius:18px;background:color-mix(in srgb, var(--panel2) 70%, transparent)}
 .streakTop{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 .streakNum{display:flex;align-items:baseline;gap:8px}
 .streakNum b{font-size:22px;letter-spacing:.2px}
@@ -2977,7 +2977,7 @@ border-top:1px solid color-mix(in srgb, var(--stroke) 70%, rgba(255,255,255,.08)
 }
 .vipPerksGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .vipPerk{
-padding:12px;
+padding:10px;
 border-radius:14px;
 border:1px solid color-mix(in srgb, var(--stroke) 70%, rgba(255,255,255,.10));
 background:color-mix(in srgb, var(--panel) 76%, transparent);
@@ -2989,7 +2989,7 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 gap:12px;
-padding:12px;
+padding:10px;
 border-radius:16px;
 border:1px solid color-mix(in srgb, var(--stroke) 70%, rgba(255,255,255,.10));
 background:color-mix(in srgb, var(--panel) 76%, transparent);
@@ -3958,17 +3958,18 @@ body:before{display:block !important;}
   inset:0;
   display:none;
   z-index:9999;
-  padding:var(--ballzInset, 34px);
+  padding:var(--ballzInset, 52px);
   background:
 radial-gradient(900px 560px at 12% 2%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
 radial-gradient(900px 560px at 92% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%),
 linear-gradient(180deg, var(--bg0), var(--bg1));
-  pointer-events:auto;
+  pointer-events:none;
   box-sizing:border-box;
 }
 .gameOverlay.show{display:block}
 
 .gameShell{
+  pointer-events:auto;
   width:100%;
   height:100%;
   border-radius:0px;
@@ -4037,7 +4038,7 @@ linear-gradient(180deg, var(--bg0), var(--bg1));
 .pCtrl.active{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.20); color:rgba(255,255,255,.95);}
 .pCtrl svg{width:18px;height:18px}
 
-body.ballzTheatre .gameOverlay{padding:16px}
+body.ballzTheatre .gameOverlay{padding:6px}
 
 body.ballzFullscreen .gameOverlay{padding:0}
 body.ballzFullscreen .gameShell{border-radius:0;border:0;box-shadow:none}
@@ -4111,7 +4112,7 @@ position:absolute;
 right:0;
 top:calc(46px + 10px);
 width:min(320px, 92vw);
-padding:12px;
+padding:10px;
 border-radius:18px;
 border:1px solid color-mix(in srgb, var(--stroke) 80%, transparent);
 background: linear-gradient(180deg,
@@ -4292,7 +4293,7 @@ color-mix(in srgb, var(--panel) 72%, #0b0b12 28%));
 border:1px solid color-mix(in srgb, var(--stroke) 70%, transparent);
 border-radius:16px;
 box-shadow: 0 22px 60px rgba(0,0,0,.45);
-padding:12px;
+padding:10px;
 z-index:120;
 }
 .provHead{
@@ -6000,7 +6001,7 @@ html.opaque-menus .poster .cornerTag{
   gap:8px;
   z-index:2;
   text-align:center;
-  padding:12px;
+  padding:10px;
 }
 .ballzBalls{ display:flex; gap:10px; margin-bottom:2px; }
 .ballzBalls i{
@@ -6202,23 +6203,25 @@ html[data-anim="off"] .modeTile:hover{
 
 .wagerGrid{
   display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
   min-height:0;
   flex:1;
   align-content:start;
 }
+@media (max-width: 1500px){ .wagerGrid{grid-template-columns: repeat(3, minmax(0,1fr));} }
+@media (max-width: 1240px){ .wagerGrid{grid-template-columns: repeat(2, minmax(0,1fr));} }
 @media (max-width: 980px){ .wagerGrid{grid-template-columns: 1fr;} }
 
 .wagerCard{
-  border-radius: 20px;
+  border-radius: 16px;
   border:1px solid var(--stroke);
   background:color-mix(in srgb, var(--panel2) 78%, transparent);
   box-shadow: var(--shadow);
-  padding: 10px;
+  padding: 8px;
   display:flex;
   flex-direction:column;
-  gap: 8px;
+  gap: 6px;
   position:relative;
   overflow:hidden;
 }
@@ -6246,7 +6249,7 @@ html[data-anim="off"] .modeTile:hover{
   border-radius:18px;
   border:1px solid color-mix(in srgb, var(--stroke) 75%, rgba(255,255,255,.05));
   background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.22));
-  padding: 10px;
+  padding: 8px;
   display:grid;
   grid-template-columns: auto 1fr auto;
   gap:12px;
@@ -6378,6 +6381,61 @@ html[data-anim="off"] .modeTile:hover{
 
 .wagerActions .btn{padding:10px 12px;border-radius:14px}
 
+
+
+/* Compact wager layout tune */
+.wagersHead{padding:12px 12px 10px; border-radius:18px;}
+.wagersTopRow{align-items:center;}
+.wagersTools{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:10px;}
+.wagersTools .selectWrap,.wagersTools .wCurTabs{min-width:0}
+.wagersTools .selectWrap select{width:100%;min-width:0;height:40px;border-radius:12px;font-weight:1100}
+.wCurTabs{height:40px;padding:4px;border-radius:12px;background:rgba(0,0,0,.22);border:1px solid var(--stroke)}
+.wCurTab{flex:1;height:100%;border-radius:9px;font-size:12px}
+.wPageCtrl{gap:6px}
+.wPageText{min-width:64px;padding:6px 8px}
+.wPageBtn{width:34px;min-width:34px;height:32px;border-radius:10px}
+.wLaunchBtn{height:32px;padding:0 10px;border-radius:10px;font-size:12px}
+.wTeams{padding:6px;gap:6px;border-radius:12px}
+.wTeams::before{top:6px;bottom:6px}
+.wTeamCol{gap:6px}
+.wPlayerTile{padding:6px;min-height:40px;border-radius:11px}
+.wAvatar{width:26px;height:26px;border-radius:9px;font-size:11px}
+.wPName{font-size:12px}
+.wPSub{font-size:11px}
+.wRole{font-size:10px;padding:4px 6px}
+.wPSub .dot{display:none}
+.wTeamCol .wPlayerTile:nth-child(n+3){display:none}
+@media (max-width:1500px){ .wagersTools{grid-template-columns:repeat(3,minmax(0,1fr));} }
+@media (max-width:980px){ .wagersTools{grid-template-columns:1fr 1fr;} }
+
+/* Dev FX playground hooks */
+html[data-gamefx="shimmer"] .wagerCard::after,
+html[data-gamefx="shimmer"] .tile::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.18) 48%, transparent 66%);
+  transform:translateX(-120%);
+  transition:transform .55s ease;
+  pointer-events:none;
+}
+html[data-gamefx="shimmer"] .wagerCard:hover::after,
+html[data-gamefx="shimmer"] .tile:hover::before{transform:translateX(120%)}
+html[data-gamefx="lift"] .wagerCard:hover{transform:translateY(-4px) scale(1.01); box-shadow:0 26px 80px rgba(0,0,0,.42)}
+html[data-gamefx="glass"] .wagerCard{backdrop-filter:blur(18px) saturate(1.18)}
+
+html[data-btnfx="gel"] .btn,
+html[data-btnfx="gel"] .pCtrl,
+html[data-btnfx="gel"] .wAcceptBtn{transition:transform .14s ease, filter .14s ease, box-shadow .14s ease}
+html[data-btnfx="gel"] .btn:hover,
+html[data-btnfx="gel"] .pCtrl:hover,
+html[data-btnfx="gel"] .wAcceptBtn:hover{transform:translateY(-2px) scale(1.02); filter:brightness(1.08)}
+html[data-btnfx="pulse"] .btn:hover,
+html[data-btnfx="pulse"] .wAcceptBtn:hover{box-shadow:0 0 0 3px rgba(255,120,80,.24), 0 14px 30px rgba(0,0,0,.34)}
+html[data-btnfx="neon"] .btn,
+html[data-btnfx="neon"] .wAcceptBtn{border-color:rgba(120,220,255,.42); box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 0 0 1px rgba(120,220,255,.2)}
+html[data-btnfx="neon"] .btn:hover,
+html[data-btnfx="neon"] .wAcceptBtn:hover{box-shadow:0 0 0 2px rgba(120,220,255,.35), 0 0 24px rgba(120,220,255,.24)}
 /* Chat wager announcement cards */
 .chatMsg.wager .chatBubble{border-color: color-mix(in srgb, var(--stroke) 60%, rgba(255,120,80,.22));}
 .chatWagerCard{
@@ -6397,18 +6455,18 @@ html[data-anim="off"] .modeTile:hover{
 .chatWagerBtns .btn{padding:8px 10px;border-radius:12px;font-size:12px}
 
 /* --- Wager Ticket v4: square thumbnail + SC/GC tabs --- */
-.wagerCard{padding: 10px;gap:12px}
+.wagerCard{padding: 8px;gap:8px}
 
 /* square ticket */
 .wInfo{
   align-self:center;
-  width:min(260px, 100%);
+  width:min(210px, 100%);
   aspect-ratio:1/1;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
   gap:10px;
-  padding:12px;
+  padding:10px;
 }
 
 /* price row */
@@ -6465,7 +6523,7 @@ html[data-anim="off"] .modeTile:hover{
 .wInfoBtns .wAcceptBtn{height: 38px;border-radius:14px}
 
 /* player area */
-.wTeams{padding:12px;gap:12px}
+.wTeams{padding:10px;gap:12px}
 .wTeams::before{top:12px;bottom:12px}
 .wTeamsMeta{
   grid-column:1 / -1;
@@ -7090,6 +7148,32 @@ All providers <span class="caret">▾</span>
     <span class="hint" style="opacity:.85">Hover + micro-interactions</span>
   </div>
   <small class="devNote">Selects the tile/card hover style. Easy to add more presets later; setting is saved locally.</small>
+</div>
+
+<div class="devGroup">
+  <span class="devLabel">Slot / Game hover effects</span>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <select id="devGameFx" class="devSelect" aria-label="Slot and game hover effects">
+      <option value="classic">Classic</option>
+      <option value="lift">Lift cards</option>
+      <option value="glass">Glass boost</option>
+      <option value="shimmer">Shimmer sweep</option>
+    </select>
+    <span class="hint" style="opacity:.85">Preview for tiles + wager cards</span>
+  </div>
+</div>
+
+<div class="devGroup">
+  <span class="devLabel">Button hover / click effects</span>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <select id="devButtonFx" class="devSelect" aria-label="Button hover effects">
+      <option value="classic">Classic</option>
+      <option value="gel">Gel pop</option>
+      <option value="pulse">Pulse ring</option>
+      <option value="neon">Neon edge</option>
+    </select>
+    <span class="hint" style="opacity:.85">Applies to CTA + wager action buttons</span>
+  </div>
 </div>
 
 <div class="devGroup">
@@ -11741,6 +11825,31 @@ if(entry === 'streak') document.getElementById('walletClaimStreak')?.scrollIntoV
 
 <script>
 (function(){
+  const gameKey = 'clt_game_fx_v1';
+  const btnKey  = 'clt_btn_fx_v1';
+  function get(k,d){ try{return localStorage.getItem(k)||d;}catch(_){return d;} }
+  function set(k,v){ try{localStorage.setItem(k,v);}catch(_){} }
+  function apply(){
+    const g = get(gameKey,'classic');
+    const b = get(btnKey,'classic');
+    document.documentElement.setAttribute('data-gamefx', g);
+    document.documentElement.setAttribute('data-btnfx', b);
+    const sg = document.getElementById('devGameFx'); if(sg) sg.value = g;
+    const sb = document.getElementById('devButtonFx'); if(sb) sb.value = b;
+  }
+  apply();
+  document.addEventListener('change',(e)=>{
+    const t=e.target;
+    if(!t) return;
+    if(t.id==='devGameFx'){ set(gameKey,t.value); apply(); try{toast('🎮','Game FX: '+t.options[t.selectedIndex].text);}catch(_){} }
+    if(t.id==='devButtonFx'){ set(btnKey,t.value); apply(); try{toast('🖱️','Button FX: '+t.options[t.selectedIndex].text);}catch(_){} }
+  },true);
+  window.__applyFxPlayground = apply;
+})();
+</script>
+
+<script>
+(function(){
 function pickHeroBg(){
 // Use the already-embedded tile art backgrounds as the source of truth
 const casinoArt = document.querySelector('#tileCasino .tileArt');
@@ -13317,7 +13426,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
   padding:0 6px 2px;
 }
 @media (max-width: 900px){
-  #streakGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #streakGrid{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 .streakTileSimple{
@@ -14328,7 +14437,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
   .topRight{display:none;}
 
   .pill{
-    pointer-events:auto;
+    pointer-events:none;
     display:flex; align-items:center; gap:10px;
     padding:12px 14px;
     border:1px solid var(--stroke);
@@ -14380,7 +14489,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
     box-shadow: 0 10px 30px rgba(0,0,0,.35);
     transition: transform .15s ease, filter .15s ease;
     user-select:none;
-    pointer-events:auto;
+    pointer-events:none;
   }
   .btn:hover{ transform: translateY(-1px); filter: brightness(1.12); }
   .btn:active{ transform: translateY(0px) scale(.98); }
@@ -14391,7 +14500,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
   }
 
   .devBtn{
-    pointer-events:auto;
+    pointer-events:none;
     padding:12px 14px;
     border-radius:14px;
     border:1px solid rgba(54,214,255,.35);
@@ -14627,7 +14736,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
     right:18px;
     bottom:18px;
     z-index:8;
-    pointer-events:auto;
+    pointer-events:none;
   }
   .fastOverlay:not(.hidden){animation:popIn .12s ease-out;}
   .fastOverlay.hidden{ display:none; }
@@ -14655,7 +14764,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
   inset: 0;
   z-index: 999;
   display:block;
-  pointer-events:auto;
+  pointer-events:none;
   /* semi-transparent so the live demo game shows through */
   background:
     radial-gradient(1200px 800px at 18% 10%, rgba(90,220,255,.12), transparent 58%),
@@ -14731,7 +14840,7 @@ body.lobbyOn #c{
       radial-gradient(1200px 900px at 50% 28%, rgba(26,50,92,.55), rgba(6,12,26,.92));
     box-shadow:none;
     overflow:hidden;
-    pointer-events:auto;
+    pointer-events:none;
   }
 
   .lobbyCard::before{
@@ -14838,7 +14947,7 @@ body.lobbyOn #c{
     background: rgba(6,10,20,.62);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    pointer-events:auto;
+    pointer-events:none;
   }
   .lobbyShop.show{ display:block; }
 
@@ -14971,7 +15080,7 @@ body.lobbyOn #c{
     flex-direction:column;
     align-items:center;
     gap:12px;
-    pointer-events:auto;
+    pointer-events:none;
   }
   .skinName,.skinState{pointer-events:none;}
     .skinCircle{
@@ -15305,7 +15414,7 @@ body.lobbyOn #c{
     border:1px solid rgba(255,255,255,.10);
     border-radius:14px;
     background:rgba(10,16,30,.38);
-    padding:12px;
+    padding:10px;
     display:flex;
     flex-direction:column;
     gap:10px;
@@ -15556,7 +15665,7 @@ body.lobbyOn #c{
   /* Side wager panel */
   .wagerBoxV59{
     margin-top:12px;
-    padding:12px;
+    padding:10px;
     border-radius:18px;
     border:1px solid rgba(255,255,255,.10);
     background:rgba(255,255,255,.03);
@@ -15600,7 +15709,7 @@ body.lobbyOn #c{
   align-items:center;
   justify-content:space-between;
   z-index:45;
-  pointer-events:auto;
+  pointer-events:none;
 }
 .shopClose{
   height:40px;
@@ -15626,7 +15735,7 @@ body.lobbyOn #c{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index:35;
-  pointer-events:auto;
+  pointer-events:none;
 }
 .lobbyShop.active,.lobbyInv.active{ display:block; }
 
@@ -16992,7 +17101,7 @@ body.lobbyOn #c{
   border:1px solid rgba(255,255,255,.10);
   background:rgba(255,255,255,.04);
   border-radius:16px;
-  padding:12px;
+  padding:10px;
 }
 .skinMetaRow{
   display:flex;
@@ -17115,7 +17224,7 @@ body.lobbyOn #c{
   border:1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.18);
   border-radius:16px;
-  padding:12px;
+  padding:10px;
   box-shadow: 0 18px 70px rgba(0,0,0,.24), inset 0 0 0 1px rgba(255,255,255,.04);
 }
 .sideHeadV44{
@@ -18503,7 +18612,7 @@ body.lobbyOn #c{
   display:flex;
   align-items:center;
   gap:12px;
-  pointer-events:auto;
+  pointer-events:none;
 }
 .lobbyNavTopV60 .miniBtnV50{
   height:48px;
@@ -18890,12 +18999,12 @@ body.lobbyOn #c{
     </div>
     <div class="queueAnim"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
     <div style="display:flex; gap:10px; margin-top:12px;">
-      <div style="flex:1;border:1px solid var(--stroke2);border-radius:20px;background:rgba(3,6,14,.28);padding:12px;text-align:center;">
+      <div style="flex:1;border:1px solid var(--stroke2);border-radius:20px;background:rgba(3,6,14,.28);padding:10px;text-align:center;">
         <div style="font-weight:1000;font-size:18px;" id="vsMe">You</div>
         <div class="mini" style="margin-top:4px;">Ready</div>
       </div>
       <div style="font-weight:1000;font-size:22px;color:var(--cyan);display:grid;place-items:center;padding:0 8px;">VS</div>
-      <div style="flex:1;border:1px solid var(--stroke2);border-radius:20px;background:rgba(3,6,14,.28);padding:12px;text-align:center;">
+      <div style="flex:1;border:1px solid var(--stroke2);border-radius:20px;background:rgba(3,6,14,.28);padding:10px;text-align:center;">
         <div style="font-weight:1000;font-size:18px;" id="vsOpp">???</div>
         <div class="mini" style="margin-top:4px;">Searching…</div>
       </div>
@@ -21224,7 +21333,7 @@ try{
   border:1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.18);
   border-radius:16px;
-  padding:12px;
+  padding:10px;
 }
 .previewLabel{
   font-size:11px;
@@ -22037,7 +22146,7 @@ function refreshLiveCompareStats(){
   border-radius:18px;
   border:1px solid rgba(255,255,255,.10);
   background:rgba(10,16,30,.38);
-  padding:12px;
+  padding:10px;
   box-shadow: 0 18px 70px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.05);
 }
 .lobbyShop .shopControlsRowV46{
@@ -22462,7 +22571,7 @@ body.timerLeft .topbar .timerPill .timerBar{
   --ballzLeft: 260px;
   --ballzRight: 320px;
   --ballzTop: 62px;
-  --ballzInset: 34px;
+  --ballzInset: 52px;
 }
 /* prevent the main scroll from scrolling while player is open */
 body.ballzOpen #scroll{ overflow:hidden !important; }
