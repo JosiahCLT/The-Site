@@ -93,8 +93,8 @@ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial
 color:var(--text);
 overflow:hidden;
 background:
-radial-gradient(900px 560px at 12% 2%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
-radial-gradient(900px 560px at 92% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%),
+radial-gradient(1200px 700px at 20% -15%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
+radial-gradient(1000px 600px at 90% 0%, color-mix(in srgb, var(--accent2) 12%, transparent), transparent 60%),
 linear-gradient(180deg, var(--bg0), var(--bg1));
 }
 body:before{
@@ -277,7 +277,7 @@ box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent), 0 22px 
 border:1px solid var(--stroke);
 background:var(--railCoverSolid, #0b0b12);
 color:var(--text);
-padding:12px;
+padding:10px;
 border-radius:18px;
 font-weight:1000;
 cursor:pointer;
@@ -301,7 +301,7 @@ box-shadow:0 18px 70px color-mix(in srgb, var(--accent) 18%, transparent);
 body[data-theme="ice"] .btn.primary{color:#f8fafc}
 .pill{
 display:flex;align-items:center;justify-content:space-between;gap:10px;
-padding:12px;
+padding:10px;
 border-radius:18px;
 border:1px solid var(--stroke);
 background:color-mix(in srgb, var(--panel2) 70%, transparent);
@@ -470,7 +470,7 @@ overflow:hidden;
 position:relative;
 }
 /* Modes card refinements (keep it clean, no header) */
-.modesCard{height:auto; padding:12px; gap:10px}
+.modesCard{height:auto; padding:10px; gap:10px}
 .modesCard:before{opacity:.55}
 /* Modes card skin override */
 .modesCard{background: rgba(0,0,0,.16); border:1px solid rgba(255,255,255,.10); box-shadow: 0 18px 70px rgba(0,0,0,.40), 0 0 0 2px rgba(255,255,255,.08)}
@@ -1464,16 +1464,19 @@ height:var(--pH);
 border-radius:18px;
 border:1px solid color-mix(in srgb, var(--stroke) 85%, transparent);
 background:
-radial-gradient(120px 120px at 20% 20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
-radial-gradient(160px 120px at 90% 30%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 60%),
-linear-gradient(180deg, color-mix(in srgb, var(--panel2) 85%, transparent), transparent);
+radial-gradient(180px 130px at 18% 16%, rgba(244,63,94,.24), transparent 64%),
+radial-gradient(200px 150px at 84% 22%, rgba(245,158,11,.20), transparent 66%),
+linear-gradient(180deg,
+  color-mix(in srgb, var(--panel2) 90%, transparent),
+  color-mix(in srgb, var(--panel) 94%, transparent)
+);
 position:relative;
 overflow:hidden;
 display:grid;
 place-items:center;
 }
 .poster:after{
-content:"";
+content:none !important;
 position:absolute;
 inset:-40% -60%;
 background:radial-gradient(circle at var(--mx, 50%) var(--my, 35%), rgba(255,255,255,.18), transparent 55%);
@@ -1481,7 +1484,7 @@ opacity:0;
 transition:opacity .16s;
 pointer-events:none;
 }
-.tile:hover .poster:after{opacity:1}
+.tile:hover .poster:after{opacity:0}
 .overlay{position:absolute;left:10px;right:10px;bottom:10px;transform:translateY(18px);opacity:0;transition:transform .16s, opacity .16s}
 .tile:hover .overlay{transform:translateY(0);opacity:1}
 .playPill{
@@ -1631,11 +1634,11 @@ box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 .chatHint{color:var(--muted);font-weight:1000;font-size:11px;text-align:center}
 .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.kpi{padding:12px;border-radius:18px;border:1px solid var(--stroke);background:color-mix(in srgb, var(--panel2) 85%, transparent)}
+.kpi{padding:10px;border-radius:18px;border:1px solid var(--stroke);background:color-mix(in srgb, var(--panel2) 85%, transparent)}
 .kpi b{display:block;font-size:20px;font-weight:1100}
 .kpi span{display:block;margin-top:3px;color:var(--muted);font-weight:1000;font-size:12px}
 .feed{display:flex;flex-direction:column;gap:10px}
-.item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border-radius:18px;border:1px solid var(--stroke);background:color-mix(in srgb, var(--panel2) 85%, transparent)}
+.item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border-radius:18px;border:1px solid var(--stroke);background:color-mix(in srgb, var(--panel2) 85%, transparent)}
 .item .l{display:flex;align-items:center;gap:10px}
 .pillDot{width:10px;height:10px;border-radius:999px;background:var(--accent)}
 .item small{display:block;color:var(--muted);font-weight:1000;margin-top:2px}
@@ -1869,9 +1872,9 @@ overflow:hidden;
 .todayBets .betsStats .kpi b{font-size:18px}
 
 /* ---- Right-rail Quests tab ---- */
-.todayQuests{display:flex;flex-direction:column;gap:10px;padding:12px;min-height:0}
+.todayQuests{display:flex;flex-direction:column;gap:10px;padding:10px;min-height:0}
 .todayQuests .questMiniList{display:flex;flex-direction:column;gap:10px;overflow:auto;min-height:0}
-.questMiniCard{border:1px solid var(--stroke);border-radius:18px;padding:12px;background:color-mix(in srgb, var(--panel2) 88%, transparent)}
+.questMiniCard{border:1px solid var(--stroke);border-radius:18px;padding:10px;background:color-mix(in srgb, var(--panel2) 88%, transparent)}
 .questMiniTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .questMiniTitle{font-weight:1100}
 .questMiniMeta{color:var(--muted);font-size:12px;font-weight:900;white-space:nowrap}
@@ -2136,7 +2139,7 @@ background:color-mix(in srgb, var(--panel2) 88%, transparent);
 }
 .walletNote{margin-top:12px;border-radius:16px;border:1px solid var(--stroke);background:var(--railCoverSolid, #0b0b12);padding:14px;color:var(--muted);font-weight:1000}
 .walletSub{margin-top:12px}
-.streakWrap{padding:12px;border:1px solid var(--stroke);border-radius:18px;background:color-mix(in srgb, var(--panel2) 70%, transparent)}
+.streakWrap{padding:10px;border:1px solid var(--stroke);border-radius:18px;background:color-mix(in srgb, var(--panel2) 70%, transparent)}
 .streakTop{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 .streakNum{display:flex;align-items:baseline;gap:8px}
 .streakNum b{font-size:22px;letter-spacing:.2px}
@@ -2977,7 +2980,7 @@ border-top:1px solid color-mix(in srgb, var(--stroke) 70%, rgba(255,255,255,.08)
 }
 .vipPerksGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .vipPerk{
-padding:12px;
+padding:10px;
 border-radius:14px;
 border:1px solid color-mix(in srgb, var(--stroke) 70%, rgba(255,255,255,.10));
 background:color-mix(in srgb, var(--panel) 76%, transparent);
@@ -2989,7 +2992,7 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 gap:12px;
-padding:12px;
+padding:10px;
 border-radius:16px;
 border:1px solid color-mix(in srgb, var(--stroke) 70%, rgba(255,255,255,.10));
 background:color-mix(in srgb, var(--panel) 76%, transparent);
@@ -3321,25 +3324,22 @@ box-shadow:0 14px 40px rgba(0,0,0,.18);
 /* Rail container: soften background and fade it into page BG (background-only fade) */
 .centerBound .railBox{
   overflow:visible;
-  background:transparent;
-  border-color:color-mix(in srgb, var(--stroke) 40%, transparent);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 18px 70px rgba(0,0,0,.22);
+  background:
+    radial-gradient(760px 320px at 14% 0%, rgba(244,63,94,.18), transparent 70%),
+    radial-gradient(760px 320px at 86% 0%, rgba(245,158,11,.16), transparent 70%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--panel2) 92%, transparent),
+      color-mix(in srgb, var(--panel) 90%, transparent)
+    );
+  border-color:var(--stroke);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 14px 44px rgba(0,0,0,.20);
 }
 .centerBound .railBox::before{
   content:"";
   position:absolute;
   inset:0;
   border-radius:24px;
-  background:
-    radial-gradient(520px 240px at 18% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 64%),
-    radial-gradient(520px 240px at 82% 0%, color-mix(in srgb, var(--accent2) 14%, transparent), transparent 66%),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--panel2) 70%, transparent),
-      transparent 72%
-    );
-  /* Fade only the background layer at edges so the cards stay crisp */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  background:linear-gradient(180deg, rgba(255,255,255,.03), transparent 62%);
   pointer-events:none;
   z-index:0;
 }
@@ -3955,22 +3955,25 @@ body:before{display:block !important;}
 /* Embedded game overlay (player-style, not modal) */
 .gameOverlay{
   position:fixed;
-  top:var(--ballzTop, 0px);
-  left:var(--ballzLeft, 0px);
-  right:var(--ballzRight, 0px);
-  bottom:0;
+  inset:0;
   display:none;
   z-index:9999;
   padding:var(--ballzInset, 18px);
-  background:color-mix(in srgb, var(--bg) 92%, #000 8%);
+  background:
+radial-gradient(1200px 700px at 20% -15%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
+radial-gradient(1000px 600px at 90% 0%, color-mix(in srgb, var(--accent2) 12%, transparent), transparent 60%),
+linear-gradient(180deg, var(--bg0), var(--bg1));
   pointer-events:auto;
   box-sizing:border-box;
+  overflow:auto;
 }
 .gameOverlay.show{display:block}
 
 .gameShell{
+  pointer-events:auto;
   width:100%;
-  height:100%;
+  min-height:100%;
+  height:auto;
   border-radius:0px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.10);
@@ -3983,8 +3986,9 @@ body:before{display:block !important;}
 
 .playerWrap{
   position:relative;
-  flex:1;
-  min-height:0;
+  flex:none;
+  height:min(68vh, 760px);
+  min-height:460px;
   display:flex;
   flex-direction:column;
   overflow:hidden;
@@ -4036,6 +4040,39 @@ body:before{display:block !important;}
 .pCtrl:hover{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.16);}
 .pCtrl.active{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.20); color:rgba(255,255,255,.95);}
 .pCtrl svg{width:18px;height:18px}
+
+body.ballzTheatre .gameOverlay{padding:6px}
+
+body.ballzFullscreen .gameOverlay{padding:0}
+body.ballzFullscreen .gameShell{border-radius:0;border:0;box-shadow:none}
+body.ballzFullscreen .playerBottomBar{display:none}
+
+
+.gameMeta{padding:14px;display:flex;flex-direction:column;gap:12px;background:transparent}
+.metaCard{border:1px solid var(--stroke);border-radius:16px;background:color-mix(in srgb, var(--panel2) 76%, transparent);padding:14px}
+.metaHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.metaHead .t{font-weight:1200;font-size:30px}
+.metaHead .sub{font-weight:1000;color:rgba(255,255,255,.7)}
+.expandBtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--stroke);background:rgba(0,0,0,.22);color:rgba(255,255,255,.86)}
+.expandBtn[aria-expanded="true"]{background:rgba(255,255,255,.08)}
+.metaTabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.metaTab{height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--stroke);background:rgba(0,0,0,.18);color:rgba(255,255,255,.9);font-weight:1100}
+.metaTab.active{background:rgba(120,180,255,.18);border-color:rgba(120,180,255,.40)}
+.metaTable{width:100%;border-collapse:collapse}
+.metaTable th,.metaTable td{padding:12px 10px;border-bottom:1px solid color-mix(in srgb, var(--stroke) 75%, transparent);text-align:left}
+.metaTable th{color:rgba(170,205,226,.95);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.metaTable tr:last-child td{border-bottom:none}
+.recRow{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.recItem{border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.24));padding:8px}
+.recPoster{height:120px;border-radius:10px;background:linear-gradient(135deg, rgba(120,180,255,.26), rgba(255,120,80,.22));display:grid;place-items:center;font-weight:1200}
+.recName{margin-top:8px;font-weight:1100;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feedTools{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px}
+.feedTools .selectWrap select{height:38px;border-radius:10px}
+body.ballzTheatre .playerWrap{height:min(78vh, 860px)}
+body.ballzFullscreen .playerWrap{height:100vh;min-height:0}
+body.ballzFullscreen .gameMeta{display:none}
+@media (max-width:1400px){ .recRow{grid-template-columns:repeat(6,minmax(0,1fr));} }
+@media (max-width:1100px){ .recRow{grid-template-columns:repeat(4,minmax(0,1fr));} }
 
 /* v35: clean, flush tools row + embedded Random button (provider picker) */
 .gridToolsRow{
@@ -4105,7 +4142,7 @@ position:absolute;
 right:0;
 top:calc(46px + 10px);
 width:min(320px, 92vw);
-padding:12px;
+padding:10px;
 border-radius:18px;
 border:1px solid color-mix(in srgb, var(--stroke) 80%, transparent);
 background: linear-gradient(180deg,
@@ -4286,7 +4323,7 @@ color-mix(in srgb, var(--panel) 72%, #0b0b12 28%));
 border:1px solid color-mix(in srgb, var(--stroke) 70%, transparent);
 border-radius:16px;
 box-shadow: 0 22px 60px rgba(0,0,0,.45);
-padding:12px;
+padding:10px;
 z-index:120;
 }
 .provHead{
@@ -5994,7 +6031,7 @@ html.opaque-menus .poster .cornerTag{
   gap:8px;
   z-index:2;
   text-align:center;
-  padding:12px;
+  padding:10px;
 }
 .ballzBalls{ display:flex; gap:10px; margin-bottom:2px; }
 .ballzBalls i{
@@ -6039,82 +6076,7 @@ html.hide-tile-tags .poster .cornerTag{ display:none !important; }
 </style>
 
 
-<style id="clt-anim-presets">
-/* ===== Dev: Animation presets (catalog) =====
-   Add more presets by:
-   1) Adding an <option> in #devAnimPreset
-   2) Adding matching CSS under html[data-anim="..."]
-*/
-.devPanel, .devPanel * { color-scheme: dark; }
 
-/* Keep Classic (V1) as the default — it uses the site's existing hover rules. */
-
-html[data-anim="lift"] .tile,
-html[data-anim="lift"] .modeTile{
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-}
-html[data-anim="lift"] .tile:hover,
-html[data-anim="lift"] .modeTile:hover{
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 28px 86px rgba(0,0,0,.34);
-}
-
-html[data-anim="tilt"] .tile,
-html[data-anim="tilt"] .modeTile{
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-  transform-origin: 50% 60%;
-}
-html[data-anim="tilt"] .tile:hover,
-html[data-anim="tilt"] .modeTile:hover{
-  transform: translateY(-5px) rotate(-1deg) scale(1.02);
-  box-shadow: 0 30px 92px rgba(0,0,0,.36);
-}
-
-html[data-anim="neon"] .tile,
-html[data-anim="neon"] .modeTile{
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-}
-html[data-anim="neon"] .tile::after,
-html[data-anim="neon"] .modeTile::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius: 18px;
-  pointer-events:none;
-  opacity:0;
-  filter: blur(14px);
-  background: conic-gradient(from 120deg,
-    rgba(0,255,255,.35),
-    rgba(255,80,140,.35),
-    rgba(255,200,70,.35),
-    rgba(120,255,120,.35),
-    rgba(0,255,255,.35)
-  );
-  transition: opacity .18s ease;
-  mix-blend-mode: screen;
-}
-html[data-anim="neon"] .tile:hover::after,
-html[data-anim="neon"] .modeTile:hover::after{ opacity:.9; }
-html[data-anim="neon"] .tile:hover,
-html[data-anim="neon"] .modeTile:hover{
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 32px 110px rgba(0,0,0,.40);
-}
-
-/* Off = kill motion without changing layout */
-html[data-anim="off"] .tile,
-html[data-anim="off"] .modeTile,
-html[data-anim="off"] .btn,
-html[data-anim="off"] .pill,
-html[data-anim="off"] .chip{
-  transition: none !important;
-  animation: none !important;
-}
-html[data-anim="off"] .tile:hover,
-html[data-anim="off"] .modeTile:hover{
-  transform: none !important;
-}
-</style>
 <style id="clt-chat-wagers-v2">
 /* Chat: remove top header + make composer vertical */
 .todayBody[data-page="chat"] .chatTopRow{display:none !important;}
@@ -6196,23 +6158,25 @@ html[data-anim="off"] .modeTile:hover{
 
 .wagerGrid{
   display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
   min-height:0;
   flex:1;
   align-content:start;
 }
+@media (max-width: 1500px){ .wagerGrid{grid-template-columns: repeat(3, minmax(0,1fr));} }
+@media (max-width: 1240px){ .wagerGrid{grid-template-columns: repeat(2, minmax(0,1fr));} }
 @media (max-width: 980px){ .wagerGrid{grid-template-columns: 1fr;} }
 
 .wagerCard{
-  border-radius: 20px;
+  border-radius: 16px;
   border:1px solid var(--stroke);
   background:color-mix(in srgb, var(--panel2) 78%, transparent);
   box-shadow: var(--shadow);
-  padding: 10px;
+  padding: 8px;
   display:flex;
   flex-direction:column;
-  gap: 8px;
+  gap: 6px;
   position:relative;
   overflow:hidden;
 }
@@ -6240,7 +6204,7 @@ html[data-anim="off"] .modeTile:hover{
   border-radius:18px;
   border:1px solid color-mix(in srgb, var(--stroke) 75%, rgba(255,255,255,.05));
   background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.22));
-  padding: 10px;
+  padding: 8px;
   display:grid;
   grid-template-columns: auto 1fr auto;
   gap:12px;
@@ -6372,6 +6336,33 @@ html[data-anim="off"] .modeTile:hover{
 
 .wagerActions .btn{padding:10px 12px;border-radius:14px}
 
+
+
+/* Compact wager layout tune */
+.wagersHead{padding:12px 12px 10px; border-radius:18px;}
+.wagersTopRow{align-items:center;}
+.wagersTools{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:10px;}
+.wagersTools .selectWrap,.wagersTools .wCurTabs{min-width:0}
+.wagersTools .selectWrap select{width:100%;min-width:0;height:40px;border-radius:12px;font-weight:1100}
+.wCurTabs{height:40px;padding:4px;border-radius:12px;background:rgba(0,0,0,.22);border:1px solid var(--stroke)}
+.wCurTab{flex:1;height:100%;border-radius:9px;font-size:12px}
+.wPageCtrl{gap:6px}
+.wPageText{min-width:64px;padding:6px 8px}
+.wPageBtn{width:34px;min-width:34px;height:32px;border-radius:10px}
+.wLaunchBtn{height:32px;padding:0 10px;border-radius:10px;font-size:12px}
+.wTeams{padding:6px;gap:6px;border-radius:12px}
+.wTeams::before{top:6px;bottom:6px}
+.wTeamCol{gap:6px}
+.wPlayerTile{padding:6px;min-height:40px;border-radius:11px}
+.wAvatar{width:26px;height:26px;border-radius:9px;font-size:11px}
+.wPName{font-size:12px}
+.wPSub{font-size:11px}
+.wRole{font-size:10px;padding:4px 6px}
+.wPSub .dot{display:none}
+.wTeamCol .wPlayerTile:nth-child(n+3){display:none}
+@media (max-width:1500px){ .wagersTools{grid-template-columns:repeat(3,minmax(0,1fr));} }
+@media (max-width:980px){ .wagersTools{grid-template-columns:1fr 1fr;} }
+
 /* Chat wager announcement cards */
 .chatMsg.wager .chatBubble{border-color: color-mix(in srgb, var(--stroke) 60%, rgba(255,120,80,.22));}
 .chatWagerCard{
@@ -6391,18 +6382,18 @@ html[data-anim="off"] .modeTile:hover{
 .chatWagerBtns .btn{padding:8px 10px;border-radius:12px;font-size:12px}
 
 /* --- Wager Ticket v4: square thumbnail + SC/GC tabs --- */
-.wagerCard{padding: 10px;gap:12px}
+.wagerCard{padding: 8px;gap:8px}
 
 /* square ticket */
 .wInfo{
   align-self:center;
-  width:min(260px, 100%);
+  width:min(210px, 100%);
   aspect-ratio:1/1;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
   gap:10px;
-  padding:12px;
+  padding:10px;
 }
 
 /* price row */
@@ -6459,7 +6450,7 @@ html[data-anim="off"] .modeTile:hover{
 .wInfoBtns .wAcceptBtn{height: 38px;border-radius:14px}
 
 /* player area */
-.wTeams{padding:12px;gap:12px}
+.wTeams{padding:10px;gap:12px}
 .wTeams::before{top:12px;bottom:12px}
 .wTeamsMeta{
   grid-column:1 / -1;
@@ -7042,14 +7033,16 @@ All providers <span class="caret">▾</span>
       
 
       <div class="devGroup">
-        <span class="devLabel">Gradients</span>
+        <span class="devLabel">Visual style: gradients</span>
         <label class="devToggle" style="display:flex;gap:10px;align-items:center;cursor:pointer">
           <input type="checkbox" id="toggleNoGrad"/>
           <span style="font-weight:1100;color:rgba(255,255,255,.9)">Disable gradients (solid UI)</span>
         </label>
-        <small class="devNote">Toggle off accent blends + background glows without changing theme palettes.</small>
+        <small class="devNote">Turns off accent glows and gradient overlays across the UI.</small>
+      </div>
+
       <div class="devGroup">
-        <span class="devLabel">Dropdown menus</span>
+        <span class="devLabel">Dropdown menu style</span>
         <label class="devToggle" style="display:flex;gap:10px;align-items:center;cursor:pointer">
           <input type="checkbox" id="toggleOpaqueMenus"/>
           <span style="font-weight:1100;color:rgba(255,255,255,.9)">Opaque dropdown menus (no glass)</span>
@@ -7058,9 +7051,6 @@ All providers <span class="caret">▾</span>
       </div>
 
 
-      </div>
-
-      
       <div class="devGroup">
         <span class="devLabel">Tile tags</span>
         <label class="devToggle" style="display:flex;gap:10px;align-items:center;cursor:pointer">
@@ -7070,21 +7060,6 @@ All providers <span class="caret">▾</span>
         <small class="devNote">Turns HOT/LIVE/FEATURED/etc badges on/off across the site.</small>
       </div>
 
-
-<div class="devGroup">
-  <span class="devLabel">Animations</span>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <select id="devAnimPreset" class="devSelect" aria-label="Animation preset">
-      <option value="classic">Classic (V1)</option>
-      <option value="lift">Lift + Glow</option>
-      <option value="tilt">Tilt + Pop</option>
-      <option value="neon">Neon Shine</option>
-      <option value="off">Off (no motion)</option>
-    </select>
-    <span class="hint" style="opacity:.85">Hover + micro-interactions</span>
-  </div>
-  <small class="devNote">Selects the tile/card hover style. Easy to add more presets later; setting is saved locally.</small>
-</div>
 
 <div class="devGroup">
         <span class="devLabel">VIP Tier</span>
@@ -9284,6 +9259,7 @@ online = Math.max(1, Math.min(99, online + (rand(3)-1)));
 updateOnline();
 loopIncoming();
 }, delay);
+})();
 /* ---------- Wagers (demo) ---------- */
 const wagerGridEl = $('#wagerGrid');
 const wFilterGame = $('#wFilterGame');
@@ -9498,7 +9474,7 @@ function renderWagers(){
 
   if(s === 'stake') list.sort((a,b)=>(b.amt-a.amt));
   else if(s === 'exp') list.sort((a,b)=>(a.expMin-b.expMin));
-  else list.sort((a,b)=>(a.id < b.id ? 1 : -1));
+  else list.sort((a,b)=>((b.createdAt||0)-(a.createdAt||0) || (String(b.id||'').localeCompare(String(a.id||'')))));
 
   const totalPages = Math.max(1, Math.ceil(list.length / W_PAGE_SIZE));
   W_PAGE = Math.min(Math.max(1, W_PAGE), totalPages);
@@ -9642,7 +9618,6 @@ $('#devWagerSeed')?.addEventListener('click', ()=>{
   toast('🧪', 'Seeded wagers');
   if(CURRENT_PAGE==='Wagers') renderWagers();
 });
-})();
 /* ---------- Drawer ---------- */
 function openDrawer(){
 $('#drawerShade')?.classList.add('show');
@@ -11695,41 +11670,22 @@ if(entry === 'streak') document.getElementById('walletClaimStreak')?.scrollIntoV
 })();
 </script>
 
+
+
+
+
 <script>
 (function(){
-  const KEY = 'clt_anim_preset_v1';
-  const DEFAULT = 'classic';
-
-  function getState(){
-    try{ return localStorage.getItem(KEY) || DEFAULT; }catch(_){ return DEFAULT; }
-  }
-  function setState(v){
-    try{ localStorage.setItem(KEY, v); }catch(_){}
-  }
-
-  function apply(){
-    const v = getState();
-    document.documentElement.setAttribute('data-anim', v);
-    const sel = document.getElementById('devAnimPreset');
-    if(sel) sel.value = v;
-  }
-
-  apply();
-
-  document.addEventListener('change', (e)=>{
-    const t = e.target;
-    if(t && t.id === 'devAnimPreset'){
-      setState(t.value);
-      apply();
-      try{
-        const label = t.options[t.selectedIndex]?.text || t.value;
-        toast('✨', 'Animation: ' + label);
-      }catch(_){}
-    }
-  }, true);
-
-  document.addEventListener('DOMContentLoaded', apply, {once:true});
-  window.__applyAnimPreset = apply;
+  try{
+    ['clt_action_btn_anim_v3','clt_menu_btn_anim_v3','clt_container_anim_v3','clt_thumb_anim_v3','clt_spotlight_anim_v1'].forEach(function(k){ localStorage.removeItem(k); });
+  }catch(_){ }
+  try{
+    document.documentElement.removeAttribute('data-action-btn-anim');
+    document.documentElement.removeAttribute('data-menu-btn-anim');
+    document.documentElement.removeAttribute('data-container-anim');
+    document.documentElement.removeAttribute('data-thumb-anim');
+    document.documentElement.removeAttribute('data-spotlight-anim');
+  }catch(_){ }
 })();
 </script>
 
@@ -13311,7 +13267,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
   padding:0 6px 2px;
 }
 @media (max-width: 900px){
-  #streakGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #streakGrid{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 .streakTileSimple{
@@ -14256,6 +14212,45 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
         <div class="pBarRight"></div>
       </div>
     </div>
+
+    <div class="gameMeta" id="gameMeta">
+      <section class="metaCard" id="gameInfoCard">
+        <div class="metaHead">
+          <div>
+            <div class="t" id="gameMetaTitle">Ballz</div>
+            <div class="sub">Hacksaw Gaming</div>
+          </div>
+          <button class="expandBtn" id="gameInfoToggle" aria-expanded="false" type="button">⌄</button>
+        </div>
+        <div id="gameInfoBody" hidden>
+          <div class="metaTabs" id="gameInfoTabs">
+            <button class="metaTab active" data-info-tab="big" type="button">Big Wins</button>
+            <button class="metaTab" data-info-tab="lucky" type="button">Lucky Wins</button>
+            <button class="metaTab" data-info-tab="challenges" type="button">Challenges</button>
+            <button class="metaTab" data-info-tab="description" type="button">Description</button>
+          </div>
+          <div id="gameInfoTableWrap"></div>
+        </div>
+      </section>
+
+      <section class="metaCard">
+        <div class="metaHead"><div class="t" style="font-size:28px">Recommended</div></div>
+        <div class="recRow" id="gameRecRow"></div>
+      </section>
+
+      <section class="metaCard">
+        <div class="metaTabs" id="gameFeedTabs">
+          <button class="metaTab active" data-feed-tab="my" type="button">My Games</button>
+          <button class="metaTab" data-feed-tab="all" type="button">All Games</button>
+          <button class="metaTab" data-feed-tab="high" type="button">High Rollers</button>
+          <button class="metaTab" data-feed-tab="description" type="button">Description</button>
+        </div>
+        <div class="feedTools">
+          <div class="selectWrap"><select id="gameFeedLimit"><option>10</option><option>20</option><option>40</option></select></div>
+        </div>
+        <div id="gameFeedTableWrap"></div>
+      </section>
+    </div>
   </div>
 </div>
 
@@ -14322,7 +14317,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
   .topRight{display:none;}
 
   .pill{
-    pointer-events:auto;
+    pointer-events:none;
     display:flex; align-items:center; gap:10px;
     padding:12px 14px;
     border:1px solid var(--stroke);
@@ -14374,7 +14369,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
     box-shadow: 0 10px 30px rgba(0,0,0,.35);
     transition: transform .15s ease, filter .15s ease;
     user-select:none;
-    pointer-events:auto;
+    pointer-events:none;
   }
   .btn:hover{ transform: translateY(-1px); filter: brightness(1.12); }
   .btn:active{ transform: translateY(0px) scale(.98); }
@@ -14385,7 +14380,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
   }
 
   .devBtn{
-    pointer-events:auto;
+    pointer-events:none;
     padding:12px 14px;
     border-radius:14px;
     border:1px solid rgba(54,214,255,.35);
@@ -14621,7 +14616,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
     right:18px;
     bottom:18px;
     z-index:8;
-    pointer-events:auto;
+    pointer-events:none;
   }
   .fastOverlay:not(.hidden){animation:popIn .12s ease-out;}
   .fastOverlay.hidden{ display:none; }
@@ -14649,7 +14644,7 @@ document.getElementById('devResetClaimables')?.addEventListener('click', (e)=>{
   inset: 0;
   z-index: 999;
   display:block;
-  pointer-events:auto;
+  pointer-events:none;
   /* semi-transparent so the live demo game shows through */
   background:
     radial-gradient(1200px 800px at 18% 10%, rgba(90,220,255,.12), transparent 58%),
@@ -14725,7 +14720,7 @@ body.lobbyOn #c{
       radial-gradient(1200px 900px at 50% 28%, rgba(26,50,92,.55), rgba(6,12,26,.92));
     box-shadow:none;
     overflow:hidden;
-    pointer-events:auto;
+    pointer-events:none;
   }
 
   .lobbyCard::before{
@@ -14832,7 +14827,7 @@ body.lobbyOn #c{
     background: rgba(6,10,20,.62);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    pointer-events:auto;
+    pointer-events:none;
   }
   .lobbyShop.show{ display:block; }
 
@@ -14965,7 +14960,7 @@ body.lobbyOn #c{
     flex-direction:column;
     align-items:center;
     gap:12px;
-    pointer-events:auto;
+    pointer-events:none;
   }
   .skinName,.skinState{pointer-events:none;}
     .skinCircle{
@@ -15299,7 +15294,7 @@ body.lobbyOn #c{
     border:1px solid rgba(255,255,255,.10);
     border-radius:14px;
     background:rgba(10,16,30,.38);
-    padding:12px;
+    padding:10px;
     display:flex;
     flex-direction:column;
     gap:10px;
@@ -15550,7 +15545,7 @@ body.lobbyOn #c{
   /* Side wager panel */
   .wagerBoxV59{
     margin-top:12px;
-    padding:12px;
+    padding:10px;
     border-radius:18px;
     border:1px solid rgba(255,255,255,.10);
     background:rgba(255,255,255,.03);
@@ -15594,7 +15589,7 @@ body.lobbyOn #c{
   align-items:center;
   justify-content:space-between;
   z-index:45;
-  pointer-events:auto;
+  pointer-events:none;
 }
 .shopClose{
   height:40px;
@@ -15620,7 +15615,7 @@ body.lobbyOn #c{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index:35;
-  pointer-events:auto;
+  pointer-events:none;
 }
 .lobbyShop.active,.lobbyInv.active{ display:block; }
 
@@ -16986,7 +16981,7 @@ body.lobbyOn #c{
   border:1px solid rgba(255,255,255,.10);
   background:rgba(255,255,255,.04);
   border-radius:16px;
-  padding:12px;
+  padding:10px;
 }
 .skinMetaRow{
   display:flex;
@@ -17109,7 +17104,7 @@ body.lobbyOn #c{
   border:1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.18);
   border-radius:16px;
-  padding:12px;
+  padding:10px;
   box-shadow: 0 18px 70px rgba(0,0,0,.24), inset 0 0 0 1px rgba(255,255,255,.04);
 }
 .sideHeadV44{
@@ -18497,7 +18492,7 @@ body.lobbyOn #c{
   display:flex;
   align-items:center;
   gap:12px;
-  pointer-events:auto;
+  pointer-events:none;
 }
 .lobbyNavTopV60 .miniBtnV50{
   height:48px;
@@ -18884,12 +18879,12 @@ body.lobbyOn #c{
     </div>
     <div class="queueAnim"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
     <div style="display:flex; gap:10px; margin-top:12px;">
-      <div style="flex:1;border:1px solid var(--stroke2);border-radius:20px;background:rgba(3,6,14,.28);padding:12px;text-align:center;">
+      <div style="flex:1;border:1px solid var(--stroke2);border-radius:20px;background:rgba(3,6,14,.28);padding:10px;text-align:center;">
         <div style="font-weight:1000;font-size:18px;" id="vsMe">You</div>
         <div class="mini" style="margin-top:4px;">Ready</div>
       </div>
       <div style="font-weight:1000;font-size:22px;color:var(--cyan);display:grid;place-items:center;padding:0 8px;">VS</div>
-      <div style="flex:1;border:1px solid var(--stroke2);border-radius:20px;background:rgba(3,6,14,.28);padding:12px;text-align:center;">
+      <div style="flex:1;border:1px solid var(--stroke2);border-radius:20px;background:rgba(3,6,14,.28);padding:10px;text-align:center;">
         <div style="font-weight:1000;font-size:18px;" id="vsOpp">???</div>
         <div class="mini" style="margin-top:4px;">Searching…</div>
       </div>
@@ -21218,7 +21213,7 @@ try{
   border:1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.18);
   border-radius:16px;
-  padding:12px;
+  padding:10px;
 }
 .previewLabel{
   font-size:11px;
@@ -22031,7 +22026,7 @@ function refreshLiveCompareStats(){
   border-radius:18px;
   border:1px solid rgba(255,255,255,.10);
   background:rgba(10,16,30,.38);
-  padding:12px;
+  padding:10px;
   box-shadow: 0 18px 70px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.05);
 }
 .lobbyShop .shopControlsRowV46{
@@ -22456,14 +22451,15 @@ body.timerLeft .topbar .timerPill .timerBar{
   --ballzLeft: 260px;
   --ballzRight: 320px;
   --ballzTop: 62px;
+  --ballzInset: 18px;
 }
 /* prevent the main scroll from scrolling while player is open */
 body.ballzOpen #scroll{ overflow:hidden !important; }
 
-/* Theatre = hide chat panel so the player gets wide */
-
 /* Keep overlay in sync with measured sidebar/chat widths */
 body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzLeft) !important; right: var(--ballzRight) !important; bottom:0 !important; }
+
+/* Theatre = tighter spacing with the same shell visible */
 </style>
 
 <script id="clt-ballz-player-boot-v14">
@@ -22483,6 +22479,83 @@ body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzL
   var btnTheatre = byId('btnTheatre');
   var btnFull    = byId('btnFull');
 
+
+  function setupGameMeta(){
+    if(window.__cltGameMetaInit) return;
+    window.__cltGameMetaInit = true;
+    var infoBody = byId('gameInfoBody');
+    var infoToggle = byId('gameInfoToggle');
+    var infoTabs = Array.prototype.slice.call(document.querySelectorAll('#gameInfoTabs .metaTab'));
+    var infoWrap = byId('gameInfoTableWrap');
+    var feedTabs = Array.prototype.slice.call(document.querySelectorAll('#gameFeedTabs .metaTab'));
+    var feedWrap = byId('gameFeedTableWrap');
+    var feedLimit = byId('gameFeedLimit');
+    var recRow = byId('gameRecRow');
+
+    var recNames = ['Superstar 7s','Knight Fall','Lion Stacks','Crystal Peak','Yummy Mummies','Experiment X','Le Fisherman','Ball Drop'];
+    if(recRow){
+      recRow.innerHTML = recNames.map(function(n){ return '<div class="recItem"><div class="recPoster">'+n.split(' ')[0]+'</div><div class="recName">'+n+'</div></div>'; }).join('');
+    }
+
+    function infoTable(tab){
+      if(tab === 'description'){
+        return '<table class="metaTable"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>House Edge</td><td>3.50% (placeholder)</td></tr><tr><td>Provider</td><td>Hacksaw Gaming</td></tr><tr><td>Mode</td><td>1v1 skill wager</td></tr></tbody></table>';
+      }
+      var rows = [
+        ['#1','dbzima','Feb 16, 2026','250,000,000.00 GC','30x','7,500,000,000.00 GC'],
+        ['#2','Hidden','Feb 19, 2026','500,000,000.00 GC','13x','6,398,000,000.00 GC'],
+        ['#3','3hunn152','Feb 16, 2026','250,000,000.00 GC','21x','5,184,500,000.00 GC']
+      ];
+      var head = '<thead><tr><th>Rank</th><th>User</th><th>Date</th><th>Amount</th><th>Multiplier</th><th>Winnings</th></tr></thead>';
+      var body = '<tbody>'+rows.map(function(r){ return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>'; }).join('')+'</tbody>';
+      return '<table class="metaTable">'+head+body+'</table>';
+    }
+
+    function feedTable(tab){
+      if(tab === 'description') return '<table class="metaTable"><thead><tr><th>Game</th><th>Note</th></tr></thead><tbody><tr><td>House Edge</td><td>Placeholder descriptions until game catalog is finalized.</td></tr></tbody></table>';
+      var lim = Math.max(1, parseInt(feedLimit && feedLimit.value || '10', 10));
+      var base = [
+        ['Experiment X','6:04 AM','10,000.00 GC','0.00x','-10,000.00 GC'],
+        ['Experiment X','6:04 AM','8,000.00 GC','0.00x','-8,000.00 GC'],
+        ['Experiment X','6:04 AM','8,000.00 GC','0.45x','-4,400.00 GC'],
+        ['Ball Drop','6:10 AM','6,500.00 GC','1.35x','8,775.00 GC']
+      ];
+      var rows = [];
+      for(var i=0;i<lim;i++) rows.push(base[i % base.length]);
+      if(tab === 'high') rows = rows.map(function(r,idx){ return [r[0],'#'+(idx+1), (50000-idx*420).toLocaleString()+'.00 GC', (2.1-idx*0.02).toFixed(2)+'x', (90000-idx*700).toLocaleString()+'.00 GC']; });
+      if(tab === 'all') rows = rows.map(function(r){ return [r[0],r[1],r[2],r[3],r[4]]; });
+      var headMy = '<thead><tr><th>Game</th><th>Time</th><th>Amount</th><th>Multiplier</th><th>Result</th></tr></thead>';
+      var headHigh = '<thead><tr><th>Game</th><th>Rank</th><th>Amount</th><th>Multiplier</th><th>Winnings</th></tr></thead>';
+      var head = (tab === 'high') ? headHigh : headMy;
+      var body = '<tbody>'+rows.map(function(r){ return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>'; }).join('')+'</tbody>';
+      return '<table class="metaTable">'+head+body+'</table>';
+    }
+
+    function setInfo(tab){
+      infoTabs.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-info-tab')===tab); });
+      if(infoWrap) infoWrap.innerHTML = infoTable(tab);
+    }
+    function setFeed(tab){
+      feedTabs.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-feed-tab')===tab); });
+      if(feedWrap) feedWrap.innerHTML = feedTable(tab);
+    }
+
+    infoTabs.forEach(function(b){ b.addEventListener('click', function(){ setInfo(b.getAttribute('data-info-tab')); }); });
+    feedTabs.forEach(function(b){ b.addEventListener('click', function(){ setFeed(b.getAttribute('data-feed-tab')); }); });
+    if(feedLimit) feedLimit.addEventListener('change', function(){ var active=document.querySelector('#gameFeedTabs .metaTab.active'); setFeed(active ? active.getAttribute('data-feed-tab') : 'my'); });
+    if(infoToggle){
+      infoToggle.addEventListener('click', function(){
+        var on = infoBody && infoBody.hidden;
+        if(infoBody) infoBody.hidden = !on;
+        infoToggle.setAttribute('aria-expanded', on ? 'true' : 'false');
+        infoToggle.textContent = on ? '⌃' : '⌄';
+      });
+    }
+
+    setInfo('big');
+    setFeed('my');
+  }
+
   function toastSafe(icon, msg){
     try{
       if(typeof toast === 'function') toast(icon, msg);
@@ -22499,9 +22572,23 @@ body.ballzOpen .gameOverlay{ top: var(--ballzTop) !important; left: var(--ballzL
       var lsW = ls ? Math.round(ls.getBoundingClientRect().width) : 0;
       var rsW = rs ? Math.round(rs.getBoundingClientRect().width) : 0;
       var topH = top ? Math.round(top.getBoundingClientRect().height) : 0;
-document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
+      document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
       document.documentElement.style.setProperty('--ballzRight', rsW + 'px');
       document.documentElement.style.setProperty('--ballzTop', topH + 'px');
+    }catch(e){}
+  }
+
+  function syncBallzRoute(open){
+    try{
+      var path = window.location.pathname || '';
+      var hash = '#game/ballz';
+      if(open){
+        if(window.location.hash !== hash){
+          history.pushState({ballz:true}, '', path + hash);
+        }
+      }else if(window.location.hash === hash){
+        history.pushState({}, '', path + '#casino');
+      }
     }catch(e){}
   }
 
@@ -22527,6 +22614,8 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
     overlay.classList.add('show');
     overlay.setAttribute('aria-hidden','false');
     document.body.classList.add('ballzOpen');
+    setupGameMeta();
+    syncBallzRoute(true);
 
     try{ frame.srcdoc = tpl.innerHTML; }catch(e){}
     frame.onload = function(){ postInitBalances(); };
@@ -22539,7 +22628,9 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
     overlay.setAttribute('aria-hidden','true');
     document.body.classList.remove('ballzOpen');
     document.body.classList.remove('ballzTheatre');
+    document.body.classList.remove('ballzFullscreen');
     if(btnTheatre) btnTheatre.classList.remove('active');
+    syncBallzRoute(false);
 
     try{ frame.srcdoc = ''; }catch(e){}
     measure();
@@ -22572,7 +22663,6 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
   function setTheatre(on){
     document.body.classList.toggle('ballzTheatre', !!on);
     if(btnTheatre) btnTheatre.classList.toggle('active', !!on);
-    measure();
   }
   if(btnTheatre){
     btnTheatre.addEventListener('click', function(e){
@@ -22639,7 +22729,16 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
     }
   }, true);
 
-  window.addEventListener('click', function(e){
+
+  // if a sidebar nav action is clicked while the game is open, close player so destination page is visible
+  document.addEventListener('click', function(e){
+    if(!document.body.classList.contains('ballzOpen')) return;
+    var navHit = e.target && e.target.closest ? e.target.closest('#leftSidebar .navBtn, #leftSidebar .sbCta') : null;
+    if(navHit){
+      try{ closeBallz(); }catch(_){ }
+    }
+  }, true);
+window.addEventListener('click', function(e){
     if(tryLaunchFromTarget(e.target)){
       e.preventDefault();
       e.stopPropagation();
@@ -22720,6 +22819,9 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
     try{
       // Ensure filters show the new ticket
       if(wFilterCur) wFilterCur.value = cur;
+      if(wFilterGame) wFilterGame.value = game;
+      if(wFilterMode) wFilterMode.value = 'All';
+      if(wFilterSort) wFilterSort.value = 'new';
       if(typeof syncWagerCurTabs === 'function') syncWagerCurTabs();
       if(typeof resetWagerPage === 'function') resetWagerPage();
       if(typeof renderWagers === 'function') renderWagers();
@@ -22755,8 +22857,15 @@ document.documentElement.style.setProperty('--ballzLeft', lsW + 'px');
     if(document.body.classList.contains('ballzOpen')) measure();
   });
 
+  window.addEventListener('popstate', function(){
+    if(window.location.hash === '#game/ballz') openBallz();
+    else if(document.body.classList.contains('ballzOpen')) closeBallz();
+  });
+
   // initial measure so offsets are correct even before first open
   measure();
+
+  if(window.location.hash === '#game/ballz') openBallz();
 })();
 </script>
 
